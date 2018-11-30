@@ -1,0 +1,20 @@
+.input-radio {
+	background-color: initial;
+	cursor: default;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 1rem;
+	height: 0.9rem;
+	width: 0.9rem;
+	text-align: center;
+	display: inline-flex;
+	position: relative;
+	top: 0.1rem;
+	margin-right: 0.5rem;
+}
+
+.input-group--radio .input-group__label {
+	font-size: 1rem;
+	font-weight: 400;
+}
