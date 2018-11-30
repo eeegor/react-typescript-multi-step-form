@@ -1,0 +1,24 @@
+.input-group__info {
+	margin-bottom: 0.5rem;
+	max-width: 80%;
+}
+
+.input-group--danger,
+.input-select--danger {
+	small {
+		color: #f55;
+	}
+	input {
+		border-color: #f55;
+	}
+}
+
+.input-group--success,
+.input-select--success {
+	small {
+		color: #2d7;
+	}
+	input {
+		border-color: #2d7;
+	}
+}
