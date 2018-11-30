@@ -15,7 +15,23 @@ yarn
 yarn start
 ```
 
+## :construction: Test
+
+To make sure the application works as expected you can run the test suite like this:
+
+```bash
+# runs all test files
+yarn test
+
+# with coverage report
+yarn test --coverage
+```
+
 ## :rainbow: Prettier
+
+Prettier is a code formatter that ensures that all outputted code conforms to a consistent style
+
+Run the following command before each commit to make sure your changes are valid :nerd_face:
 
 Formats all `Ts/Tsx`, `Js/Jsx` and `Scss` files according to `.prettierrc` presets
 
@@ -26,7 +42,12 @@ yarn format
 
 ## :vertical_traffic_light: Linter
 
-Lints all `Ts/Tsx`, `Js/Jsx` and `Scss` files according to `tslint.json` preset
+> 
+> Code linting can be seen, in a more broad sense, as static code analysis.
+> 
+> [What's the difference between Lint and Prettier?](https://restishistory.net/blog/whats-the-difference-between-eslint-and-prettier.html)
+
+Lints all `Ts/Tsx`, `Js/Jsx` and `Scss` files according to `tslint.json` presets
 
 ```bash
 # lint all files
