@@ -88,6 +88,34 @@ p {
 	margin-bottom: 1rem;
 }
 
+small {
+	font-size: 0.7rem;
+	line-height: 1rem;
+	display: inherit;
+}
+
+hr {
+	outline: 0;
+	border: 0;
+	box-shadow: 0 0 0 1px #eee;
+	margin: 2rem 0;
+}
+
+input {
+	font-family: 'Exo', 'Sans-serif';
+	margin-bottom: 1rem;
+}
+
+label {
+	font-weight: 700;
+	font-size: 0.8rem;
+}
+
+/**
+*
+* Components
+*/
+
 .content {
 	padding: 3rem 0;
 }
