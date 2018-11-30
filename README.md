@@ -29,17 +29,17 @@ yarn format
 Lints all `Ts/Tsx`, `Js/Jsx` and `Scss` files according to `tslint.json` preset
 
 ```bash
-# format all files
+# lint all files
 yarn lint
 ```
+
+> **Note:** Before running `yarn lint`, please run `yarn format` first :wink:
 
 ## :factory: Build
 
 If you wish to host this app, you will need to run the build command. After you've run the command, you will find the build artefacts in the `/dist` folder.
 
 ```bash
-# format all files
-yarn lint
+# build static files
+yarn build
 ```
-
-> **Note:** Before running `yarn lint`, please run `yarn format` first :wink:
