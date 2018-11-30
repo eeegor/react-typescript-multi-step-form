@@ -1,9 +1,9 @@
-# Multi-step-form with React & Typescript
+# Multi-step form with React & Typescript
 
-This is an example of a multistep-form implemented with React and Typescript
+This is an example of a multi-step form implemented with React and Typescript
 
 
-## Getting started
+## :rocket: Getting started
 
 After you have cloned the repository to your computer please run the following commands inside the project folder:
 
@@ -15,7 +15,7 @@ yarn
 yarn start
 ```
 
-## Prettier
+## :rainbow: Prettier
 
 Formats all `Ts/Tsx`, `Js/Jsx` and `Scss` files according to `.prettierrc` presets
 
@@ -24,7 +24,7 @@ Formats all `Ts/Tsx`, `Js/Jsx` and `Scss` files according to `.prettierrc` prese
 yarn format
 ```
 
-## Linter
+## :vertical_traffic_light: Linter
 
 Lints all `Ts/Tsx`, `Js/Jsx` and `Scss` files according to `tslint.json` preset
 
@@ -33,4 +33,13 @@ Lints all `Ts/Tsx`, `Js/Jsx` and `Scss` files according to `tslint.json` preset
 yarn lint
 ```
 
-> **Note:** Before running `yarn lint`, please run `yarn format` first ;)
+## :factory: Build
+
+If you wish to host this app, you will need to run the build command. After you've run the command, you will find the build artefacts in the `/dist` folder.
+
+```bash
+# format all files
+yarn lint
+```
+
+> **Note:** Before running `yarn lint`, please run `yarn format` first :wink:
