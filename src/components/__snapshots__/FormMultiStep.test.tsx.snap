@@ -3,6 +3,7 @@
 exports[`FormMultiStep renders markup correctly 1`] = `
 <div
   className="form-multi-step"
+  id="form-multi-step--test"
 >
   <div
     className="container"
@@ -112,34 +113,6 @@ exports[`FormMultiStep renders markup correctly 1`] = `
     <form
       className="form form-step"
       id="form-step-3"
-      onSubmit={[Function]}
-    >
-      <div
-        className="form__container"
-      >
-        <div
-          className="input-group input-group--text"
-        >
-          <label
-            className="input-group__label"
-            htmlFor="phone"
-          >
-            Your phone
-          </label>
-          <input
-            className="input-group__input input-text"
-            id="phone"
-            name="phone"
-            onChange={[Function]}
-            type="text"
-            value="+49 160 3232323"
-          />
-        </div>
-      </div>
-    </form>
-    <form
-      className="form form-step"
-      id="form-step-4"
       onSubmit={[Function]}
     >
       <div

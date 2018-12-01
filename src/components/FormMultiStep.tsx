@@ -18,6 +18,7 @@ export interface FormSchema {
 }
 
 export interface Props {
+	id: string;
 	// tslint:disable-next-line:no-any
 	formSchema: { [key: number]: any };
 	onChange: (form: FormSchema) => void;
@@ -57,11 +58,11 @@ export class FormMultiStep extends React.Component<Props, State> {
 	};
 
 	render(): JSX.Element {
-		const { formSchema } = this.props;
+		const { id, formSchema } = this.props;
 		const { form } = this.state;
 
 		return (
-			<div className="form-multi-step">
+			<div id={`form-multi-step--${id}`} className="form-multi-step">
 				<div className="container">
 					<h1>Multi Step Form</h1>
 					<div>

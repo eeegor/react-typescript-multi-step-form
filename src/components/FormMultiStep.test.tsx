@@ -16,13 +16,6 @@ describe('FormMultiStep', () => {
 			value: 'info@example.com',
 		},
 		3: {
-			type: 'text',
-			id: 'phone',
-			name: 'phone',
-			label: 'Your phone',
-			value: '+49 160 3232323',
-		},
-		4: {
 			type: 'select-radio',
 			id: 'salary',
 			name: 'salary',
@@ -38,7 +31,7 @@ describe('FormMultiStep', () => {
 	};
 
 	it('renders markup correctly', () => {
-		const component = <FormMultiStep formSchema={testData} onChange={callback} />;
+		const component = <FormMultiStep id="test" formSchema={testData} onChange={callback} />;
 		const tree = renderer.create(component).toJSON();
 		expect(tree).toMatchSnapshot();
 	});
@@ -46,8 +39,7 @@ describe('FormMultiStep', () => {
 	describe('Form Text Fields', () => {
 		const testDataForm = [
 			{ type: 'text', name: 'name', value: 'Demo' },
-			{ type: 'text', name: 'email', value: 'info@example.com' },
-			{ type: 'text', name: 'phone', value: '+49 160 3232323' },
+			{ type: 'email', name: 'email', value: 'info@example.com' },
 			{
 				type: 'select-radio',
 				name: 'salary',
@@ -56,9 +48,9 @@ describe('FormMultiStep', () => {
 		];
 
 		testDataForm.forEach((testSet, index) => {
-			it(`can change and submit ${testSet.name} input`, () => {
+			it(`can change and submit ${testSet.type} type input`, () => {
 				const nextValue = { target: { value: testSet.value } };
-				const wrapper = mount(<FormMultiStep formSchema={testData} onChange={callback} />);
+				const wrapper = mount(<FormMultiStep id="test" formSchema={testData} onChange={callback} />);
 				const form = wrapper.find(`#form-step-${index + 1}`);
 				switch (testSet.type) {
 					case 'select-radio':
