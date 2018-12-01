@@ -9,7 +9,8 @@ import { Form } from './Form';
 export interface Props {
 	className?: string;
 	children?: React.ReactNode;
-	onSubmit?: (form: React.FormEvent<HTMLFormElement>) => void;
+	id: string;
+	onSubmit: (form: React.FormEvent<HTMLFormElement>) => void;
 }
 
 export interface State {}
@@ -20,10 +21,10 @@ export class FormStep extends React.Component<Props, State> {
 	}
 
 	render(): JSX.Element {
-		const { children, className, onSubmit } = this.props;
+		const { id, children, className, onSubmit } = this.props;
 
 		return (
-			<Form className="form-step" onSubmit={form => onSubmit && onSubmit(form)}>
+			<Form id={id} className="form-step" onSubmit={form => onSubmit && onSubmit(form)}>
 				{children}
 			</Form>
 		);
