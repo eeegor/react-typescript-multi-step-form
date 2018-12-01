@@ -87,9 +87,14 @@ export class FormMultiStep extends React.Component<Props, State> {
 										id={formStepData.id}
 										name={formStepData.name}
 										label={formStepData.label}
-										value={formStepData.value}
 										values={formStepData.values}
-										defaultChecked={formStepData.values[0]}
+										defaultChecked={
+											(formStepData.values.includes(
+												form[formStepData.name]
+											) &&
+												form[formStepData.name]) ||
+											formStepData.values[0]
+										}
 										onChange={(name, event) =>
 											this.handleInputChange(name, event.target.value)
 										}
@@ -101,7 +106,7 @@ export class FormMultiStep extends React.Component<Props, State> {
 										name={formStepData.name}
 										label={formStepData.label}
 										type={formStepData.type}
-										value={formStepData.value}
+										value={form[formStepData.name]}
 										onChange={(name, event) =>
 											this.handleInputChange(name, event.target.value)
 										}
