@@ -1,7 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import * as renderer from 'react-test-renderer';
 import { InputGroupRadio } from './InputGroupRadio';
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 
 describe('InputGroupRadio', () => {
 	const callback = jest.fn();
@@ -13,10 +14,10 @@ describe('InputGroupRadio', () => {
 		onChange: callback,
 	};
 
-	it('renders without crashing', () => {
-		const div = document.createElement('div');
-		ReactDOM.render(<InputGroupRadio {...testData} />, div);
-		ReactDOM.unmountComponentAtNode(div);
+	it('renders markup correctly', () => {
+		const component = <InputGroupRadio {...testData} />;
+		const tree = renderer.create(component).toJSON();
+		expect(tree).toMatchSnapshot();
 	});
 
 	it('change event works', () => {
@@ -28,6 +29,6 @@ describe('InputGroupRadio', () => {
 	it('should adopt a valid info attribute', () => {
 		const info = 'test';
 		const wrapper = mount(<InputGroupRadio info={info} {...testData} />);
-		expect(wrapper.find('.input-group__info').text()).toEqual('test');
+		expect(wrapper.find('.input-group__info').text()).toEqual(info);
 	});
 });

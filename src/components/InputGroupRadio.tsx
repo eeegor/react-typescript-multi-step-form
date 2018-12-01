@@ -3,7 +3,6 @@
  */
 
 import * as React from 'react';
-import * as classnames from 'classnames';
 import './InputGroupRadio.scss';
 
 export interface Props {
@@ -13,7 +12,6 @@ export interface Props {
 	value: string;
 	type?: string;
 	info?: string;
-	status?: 'success' | 'danger';
 	defaultChecked?: boolean;
 	onChange: (name: string, event: React.ChangeEvent<HTMLInputElement>) => void;
 }
@@ -26,7 +24,7 @@ export class InputGroupRadio extends React.Component<Props, State> {
 	}
 
 	render(): JSX.Element {
-		const { id, value, onChange, label, name, defaultChecked, info, status } = this.props;
+		const { id, value, onChange, label, name, defaultChecked, info } = this.props;
 
 		return (
 			<div className="input-group input-group--radio">

@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputGroupRadio renders markup correctly 1`] = `
+<div
+  className="input-group input-group--radio"
+>
+  <input
+    className="input-group__input input-radio"
+    defaultChecked={false}
+    id="name"
+    name="name"
+    onChange={[Function]}
+    type="radio"
+    value="Bob"
+  />
+  <label
+    className="input-group__label"
+    htmlFor="name"
+  >
+    Your Name
+  </label>
+</div>
+`;
