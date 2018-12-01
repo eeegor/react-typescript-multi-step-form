@@ -1,7 +1,8 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import * as renderer from 'react-test-renderer';
 import { InputGroupText } from './InputGroupText';
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 
 describe('InputGroupText', () => {
 	const callback = jest.fn();
@@ -13,10 +14,10 @@ describe('InputGroupText', () => {
 		onChange: callback,
 	};
 
-	it('renders without crashing', () => {
-		const div = document.createElement('div');
-		ReactDOM.render(<InputGroupText />, div);
-		ReactDOM.unmountComponentAtNode(div);
+	it('renders markup correctly', () => {
+		const component = <InputGroupText {...testData} />;
+		const tree = renderer.create(component).toJSON();
+		expect(tree).toMatchSnapshot();
 	});
 
 	it('change event works', () => {

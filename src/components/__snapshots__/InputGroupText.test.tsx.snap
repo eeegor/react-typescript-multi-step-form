@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputGroupText renders markup correctly 1`] = `
+<div
+  className="input-group input-group--text"
+>
+  <label
+    className="input-group__label"
+    htmlFor="name"
+  >
+    Your Name
+  </label>
+  <input
+    className="input-group__input input-text"
+    id="name"
+    name="name"
+    onChange={[Function]}
+    type="text"
+    value="Bob"
+  />
+</div>
+`;
