@@ -31,7 +31,7 @@ export class InputGroupText extends React.Component<Props, State> {
 	render(): JSX.Element {
 		const { id, value, onChange, label, type, name, status, info } = this.props;
 		const cssClass = classnames(
-			`input-group input-group--${type}`,
+			`input-group input-group-${type}`,
 			status && `input-group--${status}`
 		);
 

@@ -6,8 +6,6 @@ import * as React from 'react';
 import { FormStep } from './FormStep';
 import { InputGroupText } from './InputGroupText';
 import { InputSelectRadio } from './InputSelectRadio';
-import { Props as InputGroupTextProps } from './InputGroupText';
-import { Props as InputSelectRadioProps } from './InputSelectRadio';
 import './FormMultiStep.scss';
 
 export interface FormSchema {
@@ -30,29 +28,6 @@ interface State {
 	submit: boolean;
 	form: FormSchema;
 }
-
-const DebugState = (props: { state: State; showDebugState: boolean; onClick: () => void }) => (
-	<div className="debug-state">
-		<div className="debug-state__toggle" onClick={() => props.onClick()}>
-			Show state
-		</div>
-		{props.showDebugState && (
-			<div className="debug-state__body">
-				<h3>State</h3>
-				{Object.keys(props.state).map(stateItem => (
-					<div className="flex" key={stateItem}>
-						<label>{stateItem}</label>
-						<div>
-							<pre>
-								<code>{JSON.stringify(props.state[stateItem], null, 4)}</code>
-							</pre>
-						</div>
-					</div>
-				))}
-			</div>
-		)}
-	</div>
-);
 
 export class FormMultiStep extends React.Component<Props, State> {
 	state = {
@@ -82,15 +57,12 @@ export class FormMultiStep extends React.Component<Props, State> {
 		}));
 	};
 
-	toggleDebugState = () =>
-		this.setState(state => ({ ...state, showDebugState: !state.showDebugState }));
-
 	render(): JSX.Element {
 		const { id, formSchema } = this.props;
-		const { form, currentStep, showDebugState } = this.state;
+		const { form, currentStep } = this.state;
 
 		return (
-			<div id={`form-multi-step--${id}`} className="form-multi-step">
+			<div id={`form-multi-step-${id}`} className="form-multi-step">
 				<div className="container">
 					<h1>Multi Step Form</h1>
 					<p>
@@ -99,12 +71,6 @@ export class FormMultiStep extends React.Component<Props, State> {
 							{currentStep} / {Object.keys(form).length}
 						</span>
 					</p>
-
-					<DebugState
-						state={this.state}
-						showDebugState={showDebugState}
-						onClick={() => this.toggleDebugState()}
-					/>
 
 					{Object.keys(formSchema).map(formSchemaStep => {
 						const formStepData = formSchema[formSchemaStep];

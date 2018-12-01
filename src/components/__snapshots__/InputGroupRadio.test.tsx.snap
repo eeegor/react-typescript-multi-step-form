@@ -2,7 +2,7 @@
 
 exports[`InputGroupRadio renders markup correctly 1`] = `
 <div
-  className="input-group input-group--radio"
+  className="input-group input-group-radio"
 >
   <input
     className="input-group__input input-radio"

@@ -27,7 +27,7 @@ export class InputGroupRadio extends React.Component<Props, State> {
 		const { id, value, onChange, label, name, defaultChecked, info } = this.props;
 
 		return (
-			<div className="input-group input-group--radio">
+			<div className="input-group input-group-radio">
 				<input
 					className="input-group__input input-radio"
 					id={id}

@@ -56,7 +56,7 @@ describe('FormMultiStep', () => {
 				const form = wrapper.find(`#form-step-${index + 1}`);
 				switch (testSet.type) {
 					case 'select-radio':
-						const formRadioGroup = form.find('.input-select--radio');
+						const formRadioGroup = form.find('.input-select-radio');
 						const formSelectRadioInput = formRadioGroup.find('.input-radio').first();
 						formSelectRadioInput.simulate('focus');
 						formSelectRadioInput.simulate('change', nextValue);

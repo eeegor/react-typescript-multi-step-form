@@ -30,7 +30,7 @@ export class InputSelectRadio extends React.Component<Props, State> {
 	render(): JSX.Element {
 		const { id, onChange, label, name, defaultChecked, info, status, values } = this.props;
 		const cssClass = classnames(
-			`input-select input-select--radio`,
+			`input-select input-select-radio`,
 			status && `input-select--${status}`
 		);
 

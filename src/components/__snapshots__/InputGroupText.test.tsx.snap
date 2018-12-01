@@ -2,7 +2,7 @@
 
 exports[`InputGroupText renders markup correctly 1`] = `
 <div
-  className="input-group input-group--text"
+  className="input-group input-group-text"
   id="name"
 >
   <label

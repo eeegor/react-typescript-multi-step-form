@@ -26,11 +26,11 @@ describe('App', () => {
 			it(`can change and submit ${testSet.name} input`, () => {
 				const nextValue = { target: { value: testSet.value } };
 				const wrapper = mount(<App />);
-				const formMultiStep = wrapper.find('#form-multi-step--subscribe');
+				const formMultiStep = wrapper.find('#form-multi-step-subscribe');
 				const formStep = formMultiStep.find(`#form-step-${index + 1}`);
 				switch (testSet.type) {
 					case 'select-radio':
-						const formRadioGroup = formStep.find('.input-select--radio');
+						const formRadioGroup = formStep.find('.input-select-radio');
 						const formSelectRadioInput = formRadioGroup.find('.input-radio').first();
 						formSelectRadioInput.simulate('focus');
 						formSelectRadioInput.simulate('change', nextValue);
