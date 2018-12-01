@@ -39,18 +39,13 @@ export class InputSelectRadio extends React.Component<Props, State> {
 				<label className="label" htmlFor="salary">
 					{label}
 				</label>
-				{info && (
-					<small className="input-select__info">
-						{info}
-					</small>
-				)}
+				{info && <small className="input-select__info">{info}</small>}
 				{items.map((item: string, index: number) => (
 					<InputGroupRadio
 						key={index}
 						name={name}
 						label={item}
 						value={item}
-						status={status}
 						id={`${id}-${index}`}
 						defaultChecked={defaultChecked === item}
 						onChange={(radio, event) => onChange(radio, event)}
