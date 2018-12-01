@@ -1,0 +1,257 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormMultiStep renders markup correctly 1`] = `
+<div
+  className="form-multi-step"
+>
+  <div
+    className="container"
+  >
+    <h1>
+      Multi Step Form
+    </h1>
+    <div>
+      <div
+        className="flex"
+      >
+        <label>
+          name
+        </label>
+        <div>
+          No data yet...
+        </div>
+      </div>
+      <div
+        className="flex"
+      >
+        <label>
+          email
+        </label>
+        <div>
+          No data yet...
+        </div>
+      </div>
+      <div
+        className="flex"
+      >
+        <label>
+          phone
+        </label>
+        <div>
+          No data yet...
+        </div>
+      </div>
+      <div
+        className="flex"
+      >
+        <label>
+          salary
+        </label>
+        <div>
+          No data yet...
+        </div>
+      </div>
+    </div>
+    <hr />
+    <form
+      className="form form-step"
+      id="form-step-1"
+      onSubmit={[Function]}
+    >
+      <div
+        className="form__container"
+      >
+        <div
+          className="input-group input-group--text"
+        >
+          <label
+            className="input-group__label"
+            htmlFor="name"
+          >
+            Your full name
+          </label>
+          <input
+            className="input-group__input input-text"
+            id="name"
+            name="name"
+            onChange={[Function]}
+            type="text"
+            value="Demo"
+          />
+        </div>
+      </div>
+    </form>
+    <form
+      className="form form-step"
+      id="form-step-2"
+      onSubmit={[Function]}
+    >
+      <div
+        className="form__container"
+      >
+        <div
+          className="input-group input-group--email"
+        >
+          <label
+            className="input-group__label"
+            htmlFor="email"
+          >
+            Your email
+          </label>
+          <input
+            className="input-group__input input-text"
+            id="email"
+            name="email"
+            onChange={[Function]}
+            type="email"
+            value="info@example.com"
+          />
+        </div>
+      </div>
+    </form>
+    <form
+      className="form form-step"
+      id="form-step-3"
+      onSubmit={[Function]}
+    >
+      <div
+        className="form__container"
+      >
+        <div
+          className="input-group input-group--text"
+        >
+          <label
+            className="input-group__label"
+            htmlFor="phone"
+          >
+            Your phone
+          </label>
+          <input
+            className="input-group__input input-text"
+            id="phone"
+            name="phone"
+            onChange={[Function]}
+            type="text"
+            value="+49 160 3232323"
+          />
+        </div>
+      </div>
+    </form>
+    <form
+      className="form form-step"
+      id="form-step-4"
+      onSubmit={[Function]}
+    >
+      <div
+        className="form__container"
+      >
+        <div
+          className="input-select input-select--radio"
+        >
+          <label
+            className="label"
+            htmlFor="salary"
+          >
+            Select you salary
+          </label>
+          <div
+            className="input-group input-group--radio"
+          >
+            <input
+              className="input-group__input input-radio"
+              defaultChecked={true}
+              id="salary-0"
+              name="salary"
+              onChange={[Function]}
+              type="radio"
+              value="€ 0 - € 1.000"
+            />
+            <label
+              className="input-group__label"
+              htmlFor="salary-0"
+            >
+              € 0 - € 1.000
+            </label>
+          </div>
+          <div
+            className="input-group input-group--radio"
+          >
+            <input
+              className="input-group__input input-radio"
+              defaultChecked={false}
+              id="salary-1"
+              name="salary"
+              onChange={[Function]}
+              type="radio"
+              value="€ 1.000 - € 2.000"
+            />
+            <label
+              className="input-group__label"
+              htmlFor="salary-1"
+            >
+              € 1.000 - € 2.000
+            </label>
+          </div>
+          <div
+            className="input-group input-group--radio"
+          >
+            <input
+              className="input-group__input input-radio"
+              defaultChecked={false}
+              id="salary-2"
+              name="salary"
+              onChange={[Function]}
+              type="radio"
+              value="€ 2.000 - € 3.000"
+            />
+            <label
+              className="input-group__label"
+              htmlFor="salary-2"
+            >
+              € 2.000 - € 3.000
+            </label>
+          </div>
+          <div
+            className="input-group input-group--radio"
+          >
+            <input
+              className="input-group__input input-radio"
+              defaultChecked={false}
+              id="salary-3"
+              name="salary"
+              onChange={[Function]}
+              type="radio"
+              value="€ 3.000 - € 4.000"
+            />
+            <label
+              className="input-group__label"
+              htmlFor="salary-3"
+            >
+              € 3.000 - € 4.000
+            </label>
+          </div>
+          <div
+            className="input-group input-group--radio"
+          >
+            <input
+              className="input-group__input input-radio"
+              defaultChecked={false}
+              id="salary-4"
+              name="salary"
+              onChange={[Function]}
+              type="radio"
+              value="More then € 4.000"
+            />
+            <label
+              className="input-group__label"
+              htmlFor="salary-4"
+            >
+              More then € 4.000
+            </label>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+`;
