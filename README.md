@@ -25,7 +25,18 @@ yarn test
 
 # with coverage report
 yarn test --coverage
+
+# watch
+yarn test --watch
+
+# run tests that match a spec-name (e.g `App` or `components/Form`)
+yarn test name-of-spec
+
+# update snapshots that are out of date
+yarn test --updateSnapshot
 ```
+
+> A full list of `jest` cli commands can be found [here](https://jestjs.io/docs/en/cli)
 
 ## :rainbow: Prettier
 
