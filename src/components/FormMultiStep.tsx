@@ -25,13 +25,38 @@ export interface Props {
 }
 
 interface State {
+	showDebugState: boolean;
 	currentStep: number;
 	submit: boolean;
 	form: FormSchema;
 }
 
+const DebugState = (props: { state: State; showDebugState: boolean; onClick: () => void }) => (
+	<div className="debug-state">
+		<div className="debug-state__toggle" onClick={() => props.onClick()}>
+			Show state
+		</div>
+		{props.showDebugState && (
+			<div className="debug-state__body">
+				<h3>State</h3>
+				{Object.keys(props.state).map(stateItem => (
+					<div className="flex" key={stateItem}>
+						<label>{stateItem}</label>
+						<div>
+							<pre>
+								<code>{JSON.stringify(props.state[stateItem], null, 4)}</code>
+							</pre>
+						</div>
+					</div>
+				))}
+			</div>
+		)}
+	</div>
+);
+
 export class FormMultiStep extends React.Component<Props, State> {
 	state = {
+		showDebugState: false,
 		currentStep: 1,
 		submit: false,
 		form: {
@@ -57,23 +82,30 @@ export class FormMultiStep extends React.Component<Props, State> {
 		}));
 	};
 
+	toggleDebugState = () =>
+		this.setState(state => ({ ...state, showDebugState: !state.showDebugState }));
+
 	render(): JSX.Element {
 		const { id, formSchema } = this.props;
-		const { form } = this.state;
+		const { form, currentStep, showDebugState } = this.state;
 
 		return (
 			<div id={`form-multi-step--${id}`} className="form-multi-step">
 				<div className="container">
 					<h1>Multi Step Form</h1>
-					<div>
-						{Object.keys(form).map(item => (
-							<div className="flex" key={item}>
-								<label>{item}</label>
-								<div>{form[item] || 'No data yet...'}</div>
-							</div>
-						))}
-					</div>
-					<hr />
+					<p>
+						Current step:{' '}
+						<span>
+							{currentStep} / {Object.keys(form).length}
+						</span>
+					</p>
+
+					<DebugState
+						state={this.state}
+						showDebugState={showDebugState}
+						onClick={() => this.toggleDebugState()}
+					/>
+
 					{Object.keys(formSchema).map(formSchemaStep => {
 						const formStepData = formSchema[formSchemaStep];
 						return (

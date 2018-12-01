@@ -11,49 +11,25 @@ exports[`FormMultiStep renders markup correctly 1`] = `
     <h1>
       Multi Step Form
     </h1>
-    <div>
+    <p>
+      Current step:
+       
+      <span>
+        1
+         / 
+        4
+      </span>
+    </p>
+    <div
+      className="debug-state"
+    >
       <div
-        className="flex"
+        className="debug-state__toggle"
+        onClick={[Function]}
       >
-        <label>
-          name
-        </label>
-        <div>
-          No data yet...
-        </div>
-      </div>
-      <div
-        className="flex"
-      >
-        <label>
-          email
-        </label>
-        <div>
-          No data yet...
-        </div>
-      </div>
-      <div
-        className="flex"
-      >
-        <label>
-          phone
-        </label>
-        <div>
-          No data yet...
-        </div>
-      </div>
-      <div
-        className="flex"
-      >
-        <label>
-          salary
-        </label>
-        <div>
-          No data yet...
-        </div>
+        Show state
       </div>
     </div>
-    <hr />
     <form
       className="form form-step"
       id="form-step-1"
@@ -77,7 +53,7 @@ exports[`FormMultiStep renders markup correctly 1`] = `
             name="name"
             onChange={[Function]}
             type="text"
-            value="Demo"
+            value=""
           />
         </div>
       </div>
@@ -105,7 +81,7 @@ exports[`FormMultiStep renders markup correctly 1`] = `
             name="email"
             onChange={[Function]}
             type="email"
-            value="info@example.com"
+            value=""
           />
         </div>
       </div>

@@ -41,12 +41,10 @@ interface State {
 
 export class App extends React.Component<Props, State> {
 	handleFormChange = (form: FormSchema) => {
-		this.setState(
-			state => ({
-				...state,
-				form,
-			})
-		);
+		this.setState(state => ({
+			...state,
+			form,
+		}));
 	};
 
 	render(): JSX.Element {

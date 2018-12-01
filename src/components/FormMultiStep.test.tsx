@@ -50,7 +50,9 @@ describe('FormMultiStep', () => {
 		testDataForm.forEach((testSet, index) => {
 			it(`can change and submit ${testSet.type} type input`, () => {
 				const nextValue = { target: { value: testSet.value } };
-				const wrapper = mount(<FormMultiStep id="test" formSchema={testData} onChange={callback} />);
+				const wrapper = mount(
+					<FormMultiStep id="test" formSchema={testData} onChange={callback} />
+				);
 				const form = wrapper.find(`#form-step-${index + 1}`);
 				switch (testSet.type) {
 					case 'select-radio':
