@@ -7,13 +7,14 @@ import * as classnames from 'classnames';
 import './InputGroupText.scss';
 
 export interface Props {
+	id: string;
 	name: string;
 	value: string;
 	label?: string;
 	type?: 'text' | 'email';
 	info?: string;
 	status?: 'success' | 'danger';
-	onChange: (name: string, event: React.ChangeEvent<HTMLInputElement>) => void;
+	onChange?: (name: string, event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export interface State {}
@@ -28,14 +29,14 @@ export class InputGroupText extends React.Component<Props, State> {
 	}
 
 	render(): JSX.Element {
-		const { value, onChange, label, type, name, status, info } = this.props;
+		const { id, value, onChange, label, type, name, status, info } = this.props;
 		const cssClass = classnames(
 			`input-group input-group--${type}`,
 			status && `input-group--${status}`
 		);
 
 		return (
-			<div className={cssClass}>
+			<div id={id} className={cssClass}>
 				{label && (
 					<label className="input-group__label" htmlFor={name}>
 						{label}
@@ -47,7 +48,7 @@ export class InputGroupText extends React.Component<Props, State> {
 					id={name}
 					name={name}
 					type={type}
-					onChange={event => onChange(name, event)}
+					onChange={event => onChange && onChange(name, event)}
 					value={value}
 				/>
 			</div>

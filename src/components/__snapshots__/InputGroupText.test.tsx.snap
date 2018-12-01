@@ -3,6 +3,7 @@
 exports[`InputGroupText renders markup correctly 1`] = `
 <div
   className="input-group input-group--text"
+  id="name"
 >
   <label
     className="input-group__label"

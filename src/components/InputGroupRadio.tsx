@@ -13,7 +13,7 @@ export interface Props {
 	type?: string;
 	info?: string;
 	defaultChecked?: boolean;
-	onChange: (name: string, event: React.ChangeEvent<HTMLInputElement>) => void;
+	onChange?: (name: string, event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export interface State {}
@@ -33,7 +33,7 @@ export class InputGroupRadio extends React.Component<Props, State> {
 					id={id}
 					name={name}
 					type="radio"
-					onChange={event => onChange(name, event)}
+					onChange={event => onChange && onChange(name, event)}
 					value={value}
 					defaultChecked={defaultChecked || false}
 				/>

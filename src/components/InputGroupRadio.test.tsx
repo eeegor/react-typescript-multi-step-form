@@ -1,8 +1,7 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
 import { InputGroupRadio } from './InputGroupRadio';
-import { mount, shallow } from 'enzyme';
+import { mount } from 'enzyme';
 
 describe('InputGroupRadio', () => {
 	const callback = jest.fn();

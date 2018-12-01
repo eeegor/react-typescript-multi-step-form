@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
 import { InputSelectRadio } from './InputSelectRadio';
 import { mount } from 'enzyme';
@@ -10,7 +9,7 @@ describe('InputSelectRadio', () => {
 		id: 'name',
 		name: 'name',
 		label: 'Your Name',
-		items: ['one', 'two'],
+		values: ['one', 'two'],
 		onChange: callback,
 	};
 

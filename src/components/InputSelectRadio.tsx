@@ -12,12 +12,12 @@ export interface Props {
 	name: string;
 	label: string;
 	value?: string;
-	items: string[];
+	values: string[];
 	type?: string;
 	info?: string;
 	status?: 'success' | 'danger';
 	defaultChecked?: string;
-	onChange: (name: string, event: React.ChangeEvent<HTMLInputElement>) => void;
+	onChange?: (name: string, event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export interface State {}
@@ -28,7 +28,7 @@ export class InputSelectRadio extends React.Component<Props, State> {
 	}
 
 	render(): JSX.Element {
-		const { id, onChange, label, name, defaultChecked, info, status, items } = this.props;
+		const { id, onChange, label, name, defaultChecked, info, status, values } = this.props;
 		const cssClass = classnames(
 			`input-select input-select--radio`,
 			status && `input-select--${status}`
@@ -40,7 +40,7 @@ export class InputSelectRadio extends React.Component<Props, State> {
 					{label}
 				</label>
 				{info && <small className="input-select__info">{info}</small>}
-				{items.map((item: string, index: number) => (
+				{values.map((item: string, index: number) => (
 					<InputGroupRadio
 						key={index}
 						name={name}
@@ -48,7 +48,7 @@ export class InputSelectRadio extends React.Component<Props, State> {
 						value={item}
 						id={`${id}-${index}`}
 						defaultChecked={defaultChecked === item}
-						onChange={(radio, event) => onChange(radio, event)}
+						onChange={(radio, event) => onChange && onChange(radio, event)}
 					/>
 				))}
 			</div>
