@@ -3,7 +3,7 @@
  */
 
 import * as React from 'react';
-import * as classNames from 'classnames';
+import * as classnames from 'classnames';
 import './Form.scss';
 
 export interface Props {
@@ -13,18 +13,12 @@ export interface Props {
 	onSubmit?: (form: React.FormEvent<HTMLFormElement>) => void;
 }
 
-export interface State {}
-
-export class Form extends React.Component<Props, State> {
-	constructor(props: Props) {
-		super(props);
-	}
-
+export class Form extends React.Component<Props> {
 	render(): JSX.Element {
 		const { id, children, className, onSubmit } = this.props;
 		const cssClass = 'form';
-		const cssClasses = classNames(cssClass, className);
-		const cssClassesContainer = classNames(`${cssClass}__container`);
+		const cssClasses = classnames(cssClass, className);
+		const cssClassesContainer = classnames(`${cssClass}__container`);
 
 		return (
 			<form id={id} className={cssClasses} onSubmit={form => onSubmit && onSubmit(form)}>
