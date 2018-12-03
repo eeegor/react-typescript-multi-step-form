@@ -3,7 +3,7 @@
 .input-control__label {
 	font-size: 1.5rem;
 	display: block;
-	margin-bottom: 1rem;
+	margin-bottom: 2rem;
 	text-align: center;
 }
 
@@ -14,7 +14,13 @@
 }
 
 .input-control--danger {
+	position: relative;
+
 	.input-control__errors {
+		position: absolute;
+		top: 2.5rem;
+		left: 0;
+		right: 0;
 		color: $color-danger;
 	}
 	input {
