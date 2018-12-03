@@ -3,8 +3,10 @@
 exports[`InputGroupRadio renders markup correctly 1`] = `
 <div
   className="input-group input-group-radio"
+  id="input-group-name"
 >
   <input
+    autoFocus={false}
     className="input-group__input input-radio"
     defaultChecked={false}
     id="name"
@@ -14,7 +16,7 @@ exports[`InputGroupRadio renders markup correctly 1`] = `
     value="Bob"
   />
   <label
-    className="input-group__label"
+    className="label input-group__label"
     htmlFor="name"
   >
     Your Name

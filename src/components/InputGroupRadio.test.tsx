@@ -28,6 +28,11 @@ describe('InputGroupRadio', () => {
 	it('should adopt a valid info attribute', () => {
 		const info = 'test';
 		const wrapper = mount(<InputGroupRadio info={info} {...testData} />);
-		expect(wrapper.find('.input-group__info').text()).toEqual(info);
+		expect(
+			wrapper
+				.find('.input-group__info')
+				.first()
+				.text()
+		).toEqual(info);
 	});
 });
