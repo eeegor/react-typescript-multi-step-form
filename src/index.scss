@@ -3,12 +3,21 @@
 * Imports
 */
 
+@import 'variables';
 @import url('https://fonts.googleapis.com/css?family=Exo:400,700');
 
 /**
 *
 * Reset
 */
+
+// https://hackernoon.com/removing-that-ugly-focus-ring-and-keeping-it-too-6c8727fefcd2
+body:not(.user-is-tabbing) button:focus,
+body:not(.user-is-tabbing) input:focus,
+body:not(.user-is-tabbing) select:focus,
+body:not(.user-is-tabbing) textarea:focus {
+	outline: none;
+}
 
 *,
 *:before,
@@ -28,10 +37,10 @@ body {
 	font-size: 16px;
 	font-weight: 400;
 	line-height: 2rem;
-	color: #666;
+	color: $color-primary;
 
 	@media (min-width: 767px) {
-		font-size: 21px;
+		font-size: 18px;
 	}
 }
 
@@ -42,11 +51,11 @@ h4,
 h5,
 h6 {
 	margin: 0;
-	margin-top: 3rem;
+	margin-top: 2rem;
 	margin-bottom: 1rem;
 	font-family: 'Exo', 'Sans-serif';
 	font-weight: 700;
-	color: #333;
+	color: $color-primary;
 	line-height: 3rem;
 }
 
@@ -76,10 +85,10 @@ h6 {
 }
 
 a {
-	color: #999;
+	color: $color-grey;
 
 	&:hover {
-		color: darken(#999, 20%);
+		color: darken($color-grey, 20%);
 	}
 }
 
@@ -89,7 +98,7 @@ p {
 }
 
 small {
-	font-size: 0.7rem;
+	font-size: 0.85rem;
 	line-height: 1rem;
 	display: inherit;
 }
@@ -97,13 +106,19 @@ small {
 hr {
 	outline: 0;
 	border: 0;
-	box-shadow: 0 0 0 1px #eee;
+	box-shadow: 0 0 0 1px $color-grey;
 	margin: 2rem 0;
 }
 
 input {
-	font-family: 'Exo', 'Sans-serif';
 	margin-bottom: 1rem;
+}
+
+input,
+button,
+select,
+option {
+	font-family: 'Exo', 'Sans-serif';
 }
 
 label {
@@ -116,17 +131,46 @@ label {
 * Components
 */
 
+.layout {
+	display: grid;
+	height: 100vh;
+
+	@media (min-width: 767px) {
+		grid-template-columns: repeat(8, 1fr);
+
+		.content {
+			grid-column: 1/3;
+		}
+
+		.form-multi-step {
+			grid-column: 3/9;
+		}
+	}
+
+	@media (min-width: 1280px) {
+		.content {
+			grid-column: 1/4;
+		}
+
+		.form-multi-step {
+			grid-column: 4/9;
+		}
+	}
+}
+
 .content {
-	padding: 3rem 0;
+	padding: 3rem;
+	background: #eee;
 }
 
 .container {
-	max-width: 540px;
 	width: 100%;
+	max-width: 540px;
 	margin: 0 auto;
-	padding: 0 1rem;
+	padding: 0 2rem;
 
 	@media (min-width: 767px) {
+		padding: 0 4rem;
 		max-width: 720px;
 	}
 }
