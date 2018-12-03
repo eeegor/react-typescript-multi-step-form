@@ -1,0 +1,31 @@
+.table {
+	font-size: 1rem;
+	margin-bottom: 1rem;
+	text-align: left;
+}
+
+.table__row {
+	display: grid;
+	grid-template-columns: 1fr;
+	padding: 0.5rem 1rem;
+
+	@media (min-width: 767px) {
+		grid-template-columns: 1fr 3fr;
+	}
+
+	&:nth-child(odd) {
+		background: #fafafa;
+	}
+
+	&:nth-child(even) {
+		background: #fff;
+	}
+}
+
+.table__row__label {
+	opacity: 0.5;
+}
+
+.table__row__value {
+	color: #333;
+}
