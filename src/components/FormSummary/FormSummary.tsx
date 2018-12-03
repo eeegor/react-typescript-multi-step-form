@@ -24,8 +24,10 @@ export class FormSummary extends React.Component<Props> {
 				<div className="table">
 					{Object.keys(formFields).map((formField, index) => (
 						<div className="table__row" key={formField}>
-							<div className="table__row__label">{formField}</div>
-							<div className="table__row__value">{formFields[formField]}</div>
+							<div className="table__row__column">
+								<div className="table__row__label">{formField}</div>
+								<div className="table__row__value">{formFields[formField]}</div>
+							</div>
 							<div className="table__row__edit">
 								<Button
 									size="small"
