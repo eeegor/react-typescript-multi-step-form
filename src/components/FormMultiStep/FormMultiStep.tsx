@@ -42,18 +42,6 @@ interface State {
 	errors: object;
 }
 
-const initializeForm = (formSchema: object, formData?: object) =>
-	prepareFormData(formData) || makeDefaultFormData(formSchema) || {};
-
-const initialState = (formSchema: object, formData?: object): State => {
-	return {
-		currentStep: 1,
-		complete: false,
-		form: initializeForm(formSchema, formData),
-		errors: {},
-	};
-};
-
 const makeDefaultFormData = (formSchema: object): object => {
 	let nextFormData = {};
 	Object.values(formSchema).map(field => {
@@ -75,6 +63,15 @@ const prepareFormData = (formData?: object): object | undefined => {
 		return { ...formData, submit: false };
 	}
 	return formData || undefined;
+};
+
+const initialState = (formSchema: object, formData?: object): State => {
+	return {
+		currentStep: 1,
+		complete: false,
+		form: prepareFormData(formData) || makeDefaultFormData(formSchema) || {},
+		errors: {},
+	};
 };
 
 const validateEmail = (value: string): boolean =>
@@ -138,7 +135,8 @@ export class FormMultiStep extends React.Component<FormMultiStepProps, State> {
 					...this.state.errors,
 					[current.name]:
 						(hasErrors && getValidationMessage(current, this.state)) ||
-						(invalidEmail && 'Email is not valid') || 'Something went wrong',
+						(invalidEmail && 'Email is not valid') ||
+						'Something went wrong',
 				},
 			}));
 		}
