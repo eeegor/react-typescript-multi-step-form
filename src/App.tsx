@@ -10,36 +10,29 @@ import './App.scss';
 const formMultiStepSchema: FormMultiStepSchema = {
 	1: {
 		type: 'text',
-		required: true,
 		id: 'name',
 		name: 'name',
 		label: 'Your full name',
 		value: '',
-		info: 'All data will be handled with care',
 	},
 	2: {
 		type: 'email',
-		required: true,
 		id: 'email',
 		name: 'email',
 		label: 'Your email address',
-		info: 'All data will be handled with care',
 	},
 	3: {
 		type: 'text',
-		required: true,
 		id: 'phone',
 		name: 'phone',
 		label: 'Your phone number',
-		info: 'All data will be handled with care',
 	},
 	4: {
 		type: 'radio',
-		required: true,
 		id: 'salary',
 		name: 'salary',
 		label: 'Your salary',
-		info: 'All data will be handled with care',
+		defaultChecked: false,
 		values: [
 			'€0 - €1.000',
 			'€1.000 - €2.000',
@@ -50,12 +43,10 @@ const formMultiStepSchema: FormMultiStepSchema = {
 	},
 	5: {
 		type: 'submit',
-		required: true,
 		id: 'submit',
 		name: 'submit',
 		label: 'Is this data correct?',
 		value: 'Confirm your details',
-		info: 'All data will be handled with care',
 	},
 };
 

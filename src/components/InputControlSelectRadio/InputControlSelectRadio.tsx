@@ -17,7 +17,8 @@ export interface InputControlSelectRadioProps {
 	status?: 'success' | 'danger';
 	required?: boolean;
 	className?: boolean;
-	defaultChecked?: string;
+	defaultChecked?: string | boolean;
+	errors?: string;
 	onChange?: (name: string, event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -34,6 +35,7 @@ export class InputControlSelectRadio extends React.Component<InputControlSelectR
 			info,
 			status,
 			values,
+			errors,
 		} = this.props;
 
 		return (
@@ -42,9 +44,11 @@ export class InputControlSelectRadio extends React.Component<InputControlSelectR
 				type={'select-radio'}
 				status={status}
 				className={classnames(className)}
+				errors={errors}
 			>
 				<Label className="input-control__label" htmlFor={id || name} label={label || ''} />
 				<Info className="input-control__info" label={info || ''} />
+				{errors && <Info className="input-control__errors" label={errors} />}
 				<div className="input-control-select-radio__inputs">
 					{values.map((item: string, index: number) => (
 						<InputControlRadio

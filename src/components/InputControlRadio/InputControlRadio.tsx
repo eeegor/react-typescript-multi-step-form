@@ -17,6 +17,7 @@ export interface InputControlRadioProps {
 	autoFocus?: boolean;
 	className?: string;
 	defaultChecked?: boolean;
+	errors?: string;
 	onChange?: (name: string, event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -33,6 +34,7 @@ export class InputControlRadio extends React.Component<InputControlRadioProps> {
 			defaultChecked,
 			info,
 			autoFocus,
+			errors,
 		} = this.props;
 
 		return (
@@ -40,6 +42,7 @@ export class InputControlRadio extends React.Component<InputControlRadioProps> {
 				id={id}
 				type={'radio'}
 				className={classnames(className, defaultChecked && 'input-control--checked')}
+				errors={errors}
 			>
 				<input
 					className="input-control__input input-radio"

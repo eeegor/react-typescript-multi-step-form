@@ -18,6 +18,7 @@ export interface InputControlSubmitProps {
 	required?: boolean;
 	className?: string;
 	formValues?: object;
+	errors?: string;
 	onClick?: () => void;
 	gotoStep?: (step: number) => void;
 }
@@ -37,16 +38,23 @@ export class InputControlSubmit extends React.Component<InputControlSubmitProps>
 			value,
 			formValues,
 			gotoStep,
+			errors,
 		} = this.props;
 
 		const publicFormFields = Object.assign({}, formValues);
 		delete publicFormFields['submit'];
 
 		return (
-			<InputControl id={id} type={'submit'} status={status} className={classnames(className)}>
+			<InputControl
+				id={id}
+				type={'submit'}
+				status={status}
+				className={classnames(className)}
+				errors={errors}
+			>
 				<Label className="input-control__label" htmlFor={id || name} label={label} />
 				<Info className="input-control__info" label={info} />
-
+				{errors && <Info className="input-control__errors" label={errors} />}
 				{publicFormFields && (
 					<FormSummary
 						gotoStep={step => gotoStep && gotoStep(step)}

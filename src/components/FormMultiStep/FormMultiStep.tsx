@@ -77,6 +77,18 @@ const prepareFormData = (formData?: object): object | undefined => {
 	return formData || undefined;
 };
 
+const getValidationMessage = (type: string) => {
+	switch (type) {
+		case 'email':
+			return 'Email is required';
+		case 'text':
+		default:
+			return 'This field is required';
+		case 'radio':
+			return 'You need to select one item';
+	}
+};
+
 export class FormMultiStep extends React.Component<FormMultiStepProps, State> {
 	state: State = initialState(this.props.formSchema, this.props.formData);
 
@@ -96,7 +108,7 @@ export class FormMultiStep extends React.Component<FormMultiStepProps, State> {
 				...state,
 				errors: {
 					...this.state.errors,
-					[current.name]: "Very bad. I'm dissapointed",
+					[current.name]: getValidationMessage(current.type),
 				},
 			}));
 		}
@@ -126,6 +138,7 @@ export class FormMultiStep extends React.Component<FormMultiStepProps, State> {
 		this.setState(
 			state => ({
 				...state,
+				errors: {},
 				form: {
 					...state.form,
 					[name]: value,
@@ -155,7 +168,7 @@ export class FormMultiStep extends React.Component<FormMultiStepProps, State> {
 		const { form, currentStep, complete } = this.state;
 		const formStepData = formSchema[currentStep];
 		const maxSteps = Object.keys(form).length;
-		const hasErrors = this.state.errors[formStepData.name] && 'danger';
+		const hasErrors = this.state.errors[formStepData.name];
 
 		return (
 			<div id={`form-multi-step-${id}`} className={classnames('form-multi-step', className)}>
@@ -181,10 +194,12 @@ export class FormMultiStep extends React.Component<FormMultiStepProps, State> {
 									values={formStepData.values}
 									info={formStepData.info}
 									status={formStepData.status}
+									errors={hasErrors}
 									defaultChecked={
 										(formStepData.values.includes(form[formStepData.name]) &&
 											form[formStepData.name]) ||
-										formStepData.values[0]
+										(formStepData.defaultChecked !== false &&
+											formStepData.values[0])
 									}
 									onChange={(name, event) =>
 										this.handleInputChange(name, event.target.value)
@@ -200,7 +215,8 @@ export class FormMultiStep extends React.Component<FormMultiStepProps, State> {
 									type={formStepData.type}
 									value={form[formStepData.name]}
 									info={formStepData.info}
-									status={hasErrors || formStepData.status}
+									errors={hasErrors}
+									status={formStepData.status}
 									onChange={(name, event) =>
 										this.handleInputChange(name, event.target.value)
 									}
@@ -216,6 +232,7 @@ export class FormMultiStep extends React.Component<FormMultiStepProps, State> {
 									info={formStepData.info}
 									status={formStepData.status}
 									formValues={form}
+									errors={hasErrors}
 									onClick={() => this.handleFormComplete()}
 									gotoStep={step => this.gotoStep(step)}
 								/>

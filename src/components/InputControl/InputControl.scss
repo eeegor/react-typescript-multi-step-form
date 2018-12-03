@@ -7,14 +7,14 @@
 	text-align: center;
 }
 
-.input-control__info {
+.input-control__info,
+.input-control__errors {
 	margin-bottom: 1rem;
 	text-align: center;
 }
 
-.input-control--danger,
-.input-select--danger {
-	small {
+.input-control--danger {
+	.input-control__errors {
 		color: $color-danger;
 	}
 	input {
@@ -22,11 +22,7 @@
 	}
 }
 
-.input-control--success,
-.input-select--success {
-	small {
-		color: $color-success;
-	}
+.input-control--success {
 	input {
 		border-color: $color-success;
 	}
