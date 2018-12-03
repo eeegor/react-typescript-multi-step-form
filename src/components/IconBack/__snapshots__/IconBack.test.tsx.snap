@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`IconBack renders markup correctly 1`] = `
+<svg
+  className="icon-back"
+  height="36"
+  id="next"
+  version="1.1"
+  viewBox="0 0 512 512"
+  width="36"
+  xmlSpace="preserve"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlnsXlink="http://www.w3.org/1999/xlink"
+>
+  <polygon
+    fill="#333"
+    points="352,128.4 319.7,96 160,256 160,256 160,256 319.7,416 352,383.6 224.7,256 "
+  />
+</svg>
+`;
