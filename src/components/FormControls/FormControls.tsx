@@ -20,8 +20,11 @@ export class FormControls extends React.Component<Props> {
 
 		return (
 			<div className={classnames('form-controls', className)}>
-				<div className="form-controls__back" onClick={event => onBack && onBack(event)}>
-					<IconBack id="icon-back" />
+				<div
+					className="form-controls__back"
+					onClick={event => currentStep !== 1 && onBack && onBack(event)}
+				>
+					<IconBack id="icon-back" color={currentStep === 1 ? '#eee' : '#2e3642'} />
 				</div>
 				<FormProgress maxSteps={maxSteps} currentStep={currentStep} />
 			</div>
