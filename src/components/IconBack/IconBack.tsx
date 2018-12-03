@@ -4,6 +4,7 @@
 
 import * as React from 'react';
 import * as classnames from 'classnames';
+import './IconBack.scss';
 
 export interface Props {
 	id: string;
