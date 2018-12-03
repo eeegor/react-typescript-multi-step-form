@@ -57,6 +57,7 @@ export class InputControlText extends React.Component<InputControlTextProps> {
 					value={value || ''}
 					autoFocus={true}
 					required={required}
+					{...{ noValidate: true }}
 				/>
 			</InputControl>
 		);

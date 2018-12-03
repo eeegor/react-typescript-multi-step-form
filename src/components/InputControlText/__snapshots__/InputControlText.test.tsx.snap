@@ -16,6 +16,7 @@ exports[`InputControlText renders markup correctly 1`] = `
     className="input-control__input input-text"
     id="name"
     name="name"
+    noValidate={true}
     onChange={[Function]}
     value="Bob"
   />
