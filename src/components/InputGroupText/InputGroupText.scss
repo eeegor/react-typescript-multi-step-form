@@ -1,0 +1,17 @@
+@import '../../variables';
+
+.input-text,
+.input-email {
+	display: block;
+	width: 100%;
+	padding: 0.7rem 0.75rem 0.5rem;
+	font-size: 1rem;
+	line-height: 2rem;
+	color: $color-grey-dark;
+	background-clip: padding-box;
+	border: 1px solid $color-border;
+	border-radius: 0.25rem;
+	background-color: white;
+	box-shadow: 0 4px 1rem 0 rgba(black, 0.05);
+	transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}

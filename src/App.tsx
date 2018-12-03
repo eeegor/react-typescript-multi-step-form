@@ -3,7 +3,7 @@
  */
 
 import * as React from 'react';
-import { FormMultiStep, FormMultiStepSchema } from './components/FormMultiStep';
+import { FormMultiStep, FormMultiStepSchema } from './components';
 import './index.scss';
 import './App.scss';
 
@@ -63,7 +63,7 @@ const formMultiStepSchema: FormMultiStepSchema = {
 
 const formMultiStepDefaultData = {
 	name: 'Bob Walters',
-	email: 'bob@bbw.com',
+	email: 'bob@example.com',
 	phone: '+199278782',
 	salary: 'More than €4.000',
 };

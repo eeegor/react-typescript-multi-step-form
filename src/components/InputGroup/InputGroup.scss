@@ -1,0 +1,31 @@
+@import '../../variables';
+
+.input-group__label {
+	font-size: 1.5rem;
+	display: inline-flex;
+	margin-bottom: 1rem;
+}
+
+.input-group__info {
+	margin-bottom: 1rem;
+}
+
+.input-group--danger,
+.input-select--danger {
+	small {
+		color: $color-danger;
+	}
+	input {
+		border-color: $color-danger;
+	}
+}
+
+.input-group--success,
+.input-select--success {
+	small {
+		color: $color-success;
+	}
+	input {
+		border-color: $color-success;
+	}
+}
