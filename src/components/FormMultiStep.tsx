@@ -3,117 +3,208 @@
  */
 
 import * as React from 'react';
+import * as classnames from 'classnames';
 import { FormStep } from './FormStep';
 import { InputGroupText } from './InputGroupText';
-import { InputSelectRadio } from './InputSelectRadio';
+import { InputGroupSelectRadio } from './InputGroupSelectRadio';
+import { InputGroupTextProps } from './InputGroupText';
+import { InputGroupSelectRadioProps } from './InputGroupSelectRadio';
+import { InputGroupSubmitProps, InputGroupSubmit } from './InputGroupSubmit';
+import { FormControls } from './FormControls';
+import { FormSuccess } from './FormSuccess';
+import { Button } from './Button';
 import './FormMultiStep.scss';
 
-export interface FormSchema {
-	name: string;
-	email: string;
-	phone: string;
-	salary: string;
-}
+export type FormMultiStepAllowedTypes =
+	| InputGroupTextProps
+	| InputGroupSelectRadioProps
+	| InputGroupSubmitProps;
 
-export interface Props {
+export type FormMultiStepSchema = {
+	[key: number]: FormMultiStepAllowedTypes;
+};
+
+export interface FormMultiStepProps {
 	id: string;
-	// tslint:disable-next-line:no-any
-	formSchema: { [key: number]: any };
-	onChange: (form: FormSchema) => void;
+	className?: string;
+	formSchema: object;
+	formData?: object;
+	onChange: (state: State) => void;
 }
 
 interface State {
-	showDebugState: boolean;
 	currentStep: number;
 	submit: boolean;
-	form: FormSchema;
+	form: object;
 }
 
-export class FormMultiStep extends React.Component<Props, State> {
-	state = {
-		showDebugState: false,
+const initializeForm = (formSchema: object, formData?: object) =>
+	prepareFormData(formData) || makeDefaultFormData(formSchema) || {};
+
+const initialState = (formSchema: object, formData?: object): State => {
+	return {
 		currentStep: 1,
 		submit: false,
-		form: {
-			name: '',
-			email: '',
-			phone: '',
-			salary: '',
-		},
+		form: initializeForm(formSchema, formData),
 	};
+};
 
-	handleFormSubmit = (form: React.FormEvent<HTMLFormElement>) => {
-		form.preventDefault();
-		this.props.onChange(this.state.form);
-	};
+const makeDefaultFormData = (formSchema: object): object => {
+	let nextFormData = {};
+	Object.values(formSchema).map(field => {
+		switch (field.type) {
+			case 'submit':
+				return (nextFormData[field.name] = false);
+			case 'radio':
+			case 'text':
+			case 'email':
+			default:
+				return (nextFormData[field.name] = '');
+		}
+	});
+	return nextFormData;
+};
 
-	handleInputChange = (name: string, value: string) => {
+const prepareFormData = (formData?: object): object | undefined => {
+	if (formData && !formData.hasOwnProperty('submit')) {
+		return { ...formData, submit: false };
+	}
+	return formData || undefined;
+};
+
+export class FormMultiStep extends React.Component<FormMultiStepProps, State> {
+	state: State = initialState(this.props.formSchema, this.props.formData);
+
+	gotoPrevStep = (): void => {
 		this.setState(state => ({
 			...state,
-			form: {
-				...state.form,
-				[name]: value,
-			},
+			submit: false,
+			currentStep: state.currentStep > 1 ? state.currentStep - 1 : 1,
 		}));
 	};
 
+	gotoNextStep = (): void => {
+		const maxSteps = Object.keys(this.state.form).length;
+		this.setState(state => ({
+			...state,
+			submit: false,
+			currentStep: state.currentStep < maxSteps ? state.currentStep + 1 : maxSteps,
+		}));
+	};
+
+	handleFormSubmit = (form: React.FormEvent<HTMLFormElement>): void => {
+		form.preventDefault();
+		this.gotoNextStep();
+		this.props.onChange(this.state);
+	};
+
+	handleInputChange = (name: string, value: string): void => {
+		this.setState(
+			state => ({
+				...state,
+				form: {
+					...state.form,
+					[name]: value,
+				},
+			}),
+			() => this.props.onChange(this.state)
+		);
+	};
+
+	handleFormComplete = (): void => {
+		this.setState(state => ({
+			...state,
+			submit: true,
+		}));
+		this.props.onChange(this.state);
+	};
+
+	resetForm = (event: React.MouseEvent<HTMLButtonElement>) => {
+		event.preventDefault();
+		this.setState(initialState(this.props.formSchema, this.props.formData), () =>
+			this.props.onChange(this.state)
+		);
+	};
+
 	render(): JSX.Element {
-		const { id, formSchema } = this.props;
-		const { form, currentStep } = this.state;
+		const { id, className, formSchema } = this.props;
+		const { form, currentStep, submit } = this.state;
+		const formStepData = formSchema[currentStep];
+		const maxSteps = Object.keys(form).length;
 
 		return (
-			<div id={`form-multi-step-${id}`} className="form-multi-step">
-				<div className="container">
-					<h1>Multi Step Form</h1>
-					<p>
-						Current step:{' '}
-						<span>
-							{currentStep} / {Object.keys(form).length}
-						</span>
-					</p>
-
-					{Object.keys(formSchema).map(formSchemaStep => {
-						const formStepData = formSchema[formSchemaStep];
-						return (
-							<FormStep
-								key={formSchemaStep}
-								id={`form-step-${formSchemaStep}`}
-								onSubmit={formData => this.handleFormSubmit(formData)}
+			<div id={`form-multi-step-${id}`} className={classnames('form-multi-step', className)}>
+				<FormControls
+					maxSteps={maxSteps}
+					currentStep={currentStep}
+					onBack={() => this.gotoPrevStep()}
+				/>
+				{submit && <FormSuccess onReset={event => this.resetForm(event)} />}
+				{!submit && (
+					<FormStep
+						key={currentStep}
+						id={`form-step-${currentStep}`}
+						onSubmit={formData => this.handleFormSubmit(formData)}
+					>
+						{formStepData.type === 'radio' && (
+							<InputGroupSelectRadio
+								id={formStepData.id}
+								required={formStepData.required}
+								name={formStepData.name}
+								label={formStepData.label}
+								values={formStepData.values}
+								info={formStepData.info}
+								status={formStepData.status}
+								defaultChecked={
+									(formStepData.values.includes(form[formStepData.name]) &&
+										form[formStepData.name]) ||
+									formStepData.values[0]
+								}
+								onChange={(name, event) =>
+									this.handleInputChange(name, event.target.value)
+								}
+							/>
+						)}
+						{(formStepData.type === 'text' || formStepData.type === 'email') && (
+							<InputGroupText
+								id={formStepData.id}
+								required={formStepData.required}
+								name={formStepData.name}
+								label={formStepData.label}
+								type={formStepData.type}
+								value={form[formStepData.name]}
+								info={formStepData.info}
+								status={formStepData.status}
+								onChange={(name, event) =>
+									this.handleInputChange(name, event.target.value)
+								}
+							/>
+						)}
+						{formStepData.type === 'submit' && (
+							<InputGroupSubmit
+								id={formStepData.id}
+								required={formStepData.required}
+								name={formStepData.name}
+								label={formStepData.label}
+								value={formStepData.value}
+								info={formStepData.info}
+								status={formStepData.status}
+								formValues={form}
+								onClick={() => this.handleFormComplete()}
+							/>
+						)}
+						{formStepData.type !== 'submit' && (
+							<Button
+								size="large"
+								className="form-multi-step__next"
+								type={(currentStep === maxSteps && 'disabled') || 'secondary'}
+								onClick={() => this.gotoNextStep()}
 							>
-								{formStepData.type === 'select-radio' && (
-									<InputSelectRadio
-										id={formStepData.id}
-										name={formStepData.name}
-										label={formStepData.label}
-										values={formStepData.values}
-										defaultChecked={
-											(formStepData.values.includes(
-												form[formStepData.name]
-											) &&
-												form[formStepData.name]) ||
-											formStepData.values[0]
-										}
-										onChange={(name, event) =>
-											this.handleInputChange(name, event.target.value)
-										}
-									/>
-								)}
-								{(formStepData.type === 'text' ||
-									formStepData.type === 'email') && (
-									<InputGroupText
-										name={formStepData.name}
-										label={formStepData.label}
-										type={formStepData.type}
-										value={form[formStepData.name]}
-										onChange={(name, event) =>
-											this.handleInputChange(name, event.target.value)
-										}
-									/>
-								)}
-							</FormStep>
-						);
-					})}
-				</div>
+								Next
+							</Button>
+						)}
+					</FormStep>
+				)}
 			</div>
 		);
 	}

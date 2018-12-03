@@ -6,191 +6,81 @@ exports[`FormMultiStep renders markup correctly 1`] = `
   id="form-multi-step-test"
 >
   <div
-    className="container"
+    className="form-controls"
   >
-    <h1>
-      Multi Step Form
-    </h1>
-    <p>
-      Current step:
-       
-      <span>
-        1
-         / 
-        4
-      </span>
-    </p>
-    <form
-      className="form form-step"
-      id="form-step-1"
-      onSubmit={[Function]}
+    <div
+      className="form-controls__back"
+      onClick={[Function]}
+    >
+      <svg
+        className="icon-back"
+        height="36"
+        id="icon-back"
+        version="1.1"
+        viewBox="0 0 512 512"
+        width="36"
+        xmlSpace="preserve"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlnsXlink="http://www.w3.org/1999/xlink"
+      >
+        <polygon
+          fill="#333"
+          points="352,128.4 319.7,96 160,256 160,256 160,256 319.7,416 352,383.6 224.7,256 "
+        />
+      </svg>
+    </div>
+    <div
+      className="form-progress"
     >
       <div
-        className="form__container"
-      >
-        <div
-          className="input-group input-group-text"
-        >
-          <label
-            className="input-group__label"
-            htmlFor="name"
-          >
-            Your full name
-          </label>
-          <input
-            className="input-group__input input-text"
-            id="name"
-            name="name"
-            onChange={[Function]}
-            type="text"
-            value=""
-          />
-        </div>
-      </div>
-    </form>
-    <form
-      className="form form-step"
-      id="form-step-2"
-      onSubmit={[Function]}
-    >
+        className="form-progress__indicator-bar"
+        style={
+          Object {
+            "width": "0%",
+          }
+        }
+      />
       <div
-        className="form__container"
-      >
-        <div
-          className="input-group input-group-email"
-        >
-          <label
-            className="input-group__label"
-            htmlFor="email"
-          >
-            Your email
-          </label>
-          <input
-            className="input-group__input input-text"
-            id="email"
-            name="email"
-            onChange={[Function]}
-            type="email"
-            value=""
-          />
-        </div>
-      </div>
-    </form>
-    <form
-      className="form form-step"
-      id="form-step-3"
-      onSubmit={[Function]}
-    >
-      <div
-        className="form__container"
-      >
-        <div
-          className="input-select input-select-radio"
-        >
-          <label
-            className="label"
-            htmlFor="salary"
-          >
-            Select you salary
-          </label>
-          <div
-            className="input-group input-group-radio"
-          >
-            <input
-              className="input-group__input input-radio"
-              defaultChecked={true}
-              id="salary-0"
-              name="salary"
-              onChange={[Function]}
-              type="radio"
-              value="€ 0 - € 1.000"
-            />
-            <label
-              className="input-group__label"
-              htmlFor="salary-0"
-            >
-              € 0 - € 1.000
-            </label>
-          </div>
-          <div
-            className="input-group input-group-radio"
-          >
-            <input
-              className="input-group__input input-radio"
-              defaultChecked={false}
-              id="salary-1"
-              name="salary"
-              onChange={[Function]}
-              type="radio"
-              value="€ 1.000 - € 2.000"
-            />
-            <label
-              className="input-group__label"
-              htmlFor="salary-1"
-            >
-              € 1.000 - € 2.000
-            </label>
-          </div>
-          <div
-            className="input-group input-group-radio"
-          >
-            <input
-              className="input-group__input input-radio"
-              defaultChecked={false}
-              id="salary-2"
-              name="salary"
-              onChange={[Function]}
-              type="radio"
-              value="€ 2.000 - € 3.000"
-            />
-            <label
-              className="input-group__label"
-              htmlFor="salary-2"
-            >
-              € 2.000 - € 3.000
-            </label>
-          </div>
-          <div
-            className="input-group input-group-radio"
-          >
-            <input
-              className="input-group__input input-radio"
-              defaultChecked={false}
-              id="salary-3"
-              name="salary"
-              onChange={[Function]}
-              type="radio"
-              value="€ 3.000 - € 4.000"
-            />
-            <label
-              className="input-group__label"
-              htmlFor="salary-3"
-            >
-              € 3.000 - € 4.000
-            </label>
-          </div>
-          <div
-            className="input-group input-group-radio"
-          >
-            <input
-              className="input-group__input input-radio"
-              defaultChecked={false}
-              id="salary-4"
-              name="salary"
-              onChange={[Function]}
-              type="radio"
-              value="More then € 4.000"
-            />
-            <label
-              className="input-group__label"
-              htmlFor="salary-4"
-            >
-              More then € 4.000
-            </label>
-          </div>
-        </div>
-      </div>
-    </form>
+        className="form-progress__background-bar"
+      />
+    </div>
   </div>
+  <form
+    className="form form-step"
+    id="form-step-1"
+    onSubmit={[Function]}
+  >
+    <div
+      className="form__container"
+    >
+      <div
+        className="input-group input-group-text"
+        id="input-group-name"
+      >
+        <label
+          className="label input-group__label"
+          htmlFor="name"
+        >
+          Your full name
+        </label>
+        <input
+          autoFocus={true}
+          className="input-group__input input-text"
+          id="name"
+          name="name"
+          onChange={[Function]}
+          type="text"
+          value=""
+        />
+      </div>
+      <button
+        className="button button--secondary button--large form-multi-step__next"
+        onClick={[Function]}
+        type="button"
+      >
+        Next
+      </button>
+    </div>
+  </form>
 </div>
 `;

@@ -16,7 +16,7 @@ describe('FormMultiStep', () => {
 			value: 'info@example.com',
 		},
 		3: {
-			type: 'select-radio',
+			type: 'radio',
 			id: 'salary',
 			name: 'salary',
 			label: 'Select you salary',
@@ -28,52 +28,120 @@ describe('FormMultiStep', () => {
 				'More then € 4.000',
 			],
 		},
+		4: {
+			type: 'submit',
+			id: 'submit',
+			name: 'submit',
+			label: 'Is this data correct?',
+		},
 	};
 
 	it('renders markup correctly', () => {
-		const component = <FormMultiStep id="test" formSchema={testData} onChange={callback} />;
-		const tree = renderer.create(component).toJSON();
+		const wrapper = <FormMultiStep id="test" formSchema={testData} onChange={callback} />;
+		const tree = renderer.create(wrapper).toJSON();
 		expect(tree).toMatchSnapshot();
 	});
 
 	describe('Form Text Fields', () => {
-		const testDataForm = [
-			{ type: 'text', name: 'name', value: 'Demo' },
-			{ type: 'email', name: 'email', value: 'info@example.com' },
-			{
-				type: 'select-radio',
-				name: 'salary',
-				value: '1.000 - 2.000',
-			},
-		];
-
-		testDataForm.forEach((testSet, index) => {
-			it(`can change and submit ${testSet.type} type input`, () => {
-				const nextValue = { target: { value: testSet.value } };
-				const wrapper = mount(
-					<FormMultiStep id="test" formSchema={testData} onChange={callback} />
-				);
-				const form = wrapper.find(`#form-step-${index + 1}`);
-				switch (testSet.type) {
-					case 'select-radio':
-						const formRadioGroup = form.find('.input-select-radio');
-						const formSelectRadioInput = formRadioGroup.find('.input-radio').first();
-						formSelectRadioInput.simulate('focus');
-						formSelectRadioInput.simulate('change', nextValue);
-						formRadioGroup.simulate('submit', nextValue);
-						break;
-
-					case 'text':
-					default:
-						const formTextGroup = form.find('.input-text');
-						formTextGroup.simulate('focus');
-						formTextGroup.simulate('change', nextValue);
-						formTextGroup.simulate('submit', nextValue);
-						break;
-				}
-				const formState = wrapper.state()['form'];
-				expect(formState[testSet.name]).toEqual(testSet.value);
-			});
+		it('can change and submit text type input', () => {
+			const testSet = testData[1];
+			const nextValue = { target: { value: testSet.value } };
+			console.log('testSet', testSet);
+			const wrapper = mount(
+				<FormMultiStep id="test-text" formSchema={{ 1: testSet }} onChange={callback} />
+			);
+			const form = wrapper.find(`#form-step-1`);
+			const formTextGroup = form.find('.input-text');
+			formTextGroup.simulate('focus');
+			formTextGroup.simulate('change', nextValue);
+			formTextGroup.simulate('submit', nextValue);
+			const formState = wrapper.state()['form'];
+			expect(formState[testSet.name]).toEqual(testSet.value);
 		});
+
+		it('can change and submit email type input', () => {
+			const testSet = testData[2];
+			const nextValue = { target: { value: testSet.value } };
+			console.log('testSet', testSet);
+			const wrapper = mount(
+				<FormMultiStep id="test-email" formSchema={{ 1: testSet }} onChange={callback} />
+			);
+			const form = wrapper.find(`#form-step-1`);
+			const formTextGroup = form.find('.input-email');
+			formTextGroup.simulate('focus');
+			formTextGroup.simulate('change', nextValue);
+			formTextGroup.simulate('submit', nextValue);
+			const formState = wrapper.state()['form'];
+			expect(formState[testSet.name]).toEqual(testSet.value);
+		});
+
+		it('can change and submit select-radio type input', () => {
+			const testSet = testData[3];
+			const nextValue = { target: { value: testSet.values[2] } };
+			console.log('testSet', testSet);
+			const wrapper = mount(
+				<FormMultiStep
+					id="test-select-radio"
+					formSchema={{ 1: testSet }}
+					onChange={callback}
+				/>
+			);
+			const form = wrapper.find(`#form-step-1`);
+			const formRadioGroup = form.find('.input-group-select-radio');
+			const formSelectRadioInput = formRadioGroup.find('.input-radio').first();
+			formSelectRadioInput.simulate('focus');
+			formSelectRadioInput.simulate('change', nextValue);
+			formRadioGroup.simulate('submit', nextValue);
+			const formState = wrapper.state()['form'];
+			expect(formState[testSet.name]).toEqual(testSet.values[2]);
+		});
+	});
+
+	it('should go to next step', () => {
+		const testSet = testData[1];
+		const nextValue = { target: { value: testSet.value } };
+		const wrapper = mount(
+			<FormMultiStep id="test-select-radio" formSchema={testData} onChange={callback} />
+		);
+		const form = wrapper.find(`#form-step-1`);
+		const formTextGroup = form.find('.input-text');
+		formTextGroup.simulate('focus');
+		formTextGroup.simulate('change', nextValue);
+		formTextGroup.simulate('submit', nextValue);
+		const state = wrapper.state();
+		console.log('state', state);
+		expect(state['currentStep']).toEqual(2);
+	});
+
+	it('should update form changes to state', () => {
+		const testSet = testData[1];
+		const nextValue = { target: { value: testSet.value } };
+		const wrapper = mount(
+			<FormMultiStep id="test-select-radio" formSchema={testData} onChange={callback} />
+		);
+		const form = wrapper.find(`#form-step-1`);
+		const formTextGroup = form.find('.input-text');
+		formTextGroup.simulate('focus');
+		formTextGroup.simulate('change', nextValue);
+		formTextGroup.simulate('submit', nextValue);
+		const prev = wrapper.find(`#icon-back`).first();
+		prev.simulate('focus');
+		prev.simulate('click');
+		const state = wrapper.state();
+		console.log('state', state);
+		expect(state['currentStep']).toEqual(1);
+	});
+
+	it('should handleFormComplete', () => {
+		const testSet = testData[4];
+		const wrapper = mount(
+			<FormMultiStep id="test-submit" formSchema={{ 1: testSet }} onChange={callback} />
+		);
+		const submitGroup = wrapper.find(`.input-group-submit`).first();
+		const button = submitGroup.find(`button`).first();
+		button.simulate('focus');
+		button.simulate('click');
+		// expect('#test-submit').toHaveBeenCalledTimes(1);
+		expect(wrapper.find('.form-success').length).toEqual(1);
 	});
 });
