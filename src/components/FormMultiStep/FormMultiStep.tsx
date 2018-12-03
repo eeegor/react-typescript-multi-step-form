@@ -95,6 +95,15 @@ export class FormMultiStep extends React.Component<FormMultiStepProps, State> {
 		}));
 	};
 
+	gotoStep = (step: number): void => {
+		const maxSteps = Object.keys(this.state.form).length;
+		this.setState(state => ({
+			...state,
+			complete: false,
+			currentStep: step > 0 ? (step < maxSteps ? step : maxSteps) : 1,
+		}));
+	};
+
 	handleFormSubmit = (form: React.FormEvent<HTMLFormElement>): void => {
 		form.preventDefault();
 		this.gotoNextStep();
@@ -195,6 +204,7 @@ export class FormMultiStep extends React.Component<FormMultiStepProps, State> {
 									status={formStepData.status}
 									formValues={form}
 									onClick={() => this.handleFormComplete()}
+									gotoStep={step => this.gotoStep(step)}
 								/>
 							)}
 							{formStepData.type !== 'submit' && (

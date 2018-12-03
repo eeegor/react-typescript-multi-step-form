@@ -36,7 +36,11 @@ export class InputControlRadio extends React.Component<InputControlRadioProps> {
 		} = this.props;
 
 		return (
-			<InputControl id={id} type={'radio'} className={classnames(className, defaultChecked && 'input-control--checked')}>
+			<InputControl
+				id={id}
+				type={'radio'}
+				className={classnames(className, defaultChecked && 'input-control--checked')}
+			>
 				<input
 					className="input-control__input input-radio"
 					id={id}

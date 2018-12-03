@@ -21,7 +21,11 @@ export class FormSuccess extends React.Component<Props> {
 				<IconSuccess id="success" color="#83c736" />
 				<h2>Success!</h2>
 				<p>Thank you for submitting</p>
-				<Button className="form-success__reset" type="primary" onClick={event => onReset && onReset(event)}>
+				<Button
+					className="form-success__reset"
+					type="primary"
+					onClick={event => onReset && onReset(event)}
+				>
 					Start over
 				</Button>
 			</div>

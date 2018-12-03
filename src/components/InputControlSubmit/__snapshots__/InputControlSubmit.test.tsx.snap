@@ -24,7 +24,7 @@ exports[`InputControlSubmit renders markup correctly 1`] = `
     />
   </div>
   <button
-    className="button button--success button--large input-control__input input-submit"
+    className="button button--success button--large input-control-submit__submit"
     onClick={[Function]}
     type="button"
   >

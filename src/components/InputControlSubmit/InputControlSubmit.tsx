@@ -19,6 +19,7 @@ export interface InputControlSubmitProps {
 	className?: string;
 	formValues?: object;
 	onClick?: () => void;
+	gotoStep?: (step: number) => void;
 }
 
 export class InputControlSubmit extends React.Component<InputControlSubmitProps> {
@@ -35,6 +36,7 @@ export class InputControlSubmit extends React.Component<InputControlSubmitProps>
 			info,
 			value,
 			formValues,
+			gotoStep,
 		} = this.props;
 
 		const publicFormFields = Object.assign({}, formValues);
@@ -45,7 +47,12 @@ export class InputControlSubmit extends React.Component<InputControlSubmitProps>
 				<Label className="input-control__label" htmlFor={id || name} label={label} />
 				<Info className="input-control__info" label={info} />
 
-				{publicFormFields && <FormSummary formFields={publicFormFields} />}
+				{publicFormFields && (
+					<FormSummary
+						gotoStep={step => gotoStep && gotoStep(step)}
+						formFields={publicFormFields}
+					/>
+				)}
 
 				<Button
 					className={`input-control-submit__submit`}
