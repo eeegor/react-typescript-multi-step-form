@@ -48,6 +48,7 @@ exports[`FormMultiStep renders markup correctly 1`] = `
   <form
     className="form form-step"
     id="form-step-1"
+    noValidate={true}
     onSubmit={[Function]}
   >
     <div
@@ -68,6 +69,7 @@ exports[`FormMultiStep renders markup correctly 1`] = `
           className="input-control__input input-text"
           id="name"
           name="name"
+          noValidate={true}
           onChange={[Function]}
           type="text"
           value=""

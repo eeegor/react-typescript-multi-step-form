@@ -38,6 +38,7 @@ export interface FormMultiStepProps {
 interface State {
 	currentStep: number;
 	complete: boolean;
+	valid: boolean;
 	form: object;
 	errors: object;
 }
@@ -69,11 +70,13 @@ const initialState = (formSchema: object, formData?: object): State => {
 	return {
 		currentStep: 1,
 		complete: false,
+		valid: false,
 		form: prepareFormData(formData) || makeDefaultFormData(formSchema) || {},
 		errors: {},
 	};
 };
 
+const validateString = (value: string): boolean => /[0-9a-zA-Z]{2,}/i.test(`${value}`);
 const validateEmail = (value: string): boolean =>
 	/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
 		`${value}`
@@ -104,8 +107,8 @@ export class FormMultiStep extends React.Component<FormMultiStepProps, State> {
 
 	gotoNextStep = (): void => {
 		const maxSteps = Object.keys(this.state.form).length;
-		const current = this.props.formSchema[this.state.currentStep];
-		if (this.validateInput(current)) {
+		
+		if (this.validateInput()) {
 			this.setState(state => ({
 				...state,
 				complete: false,
@@ -123,22 +126,27 @@ export class FormMultiStep extends React.Component<FormMultiStepProps, State> {
 		}));
 	};
 
-	validateInput = (current: FormMultiStepAllowedTypes) => {
+	validateInput = (): boolean => {
+		const current = this.props.formSchema[this.state.currentStep];
 		const hasErrors = this.state.form[current.name] === '';
+		const invalidString =
+			current['type'] === 'text' && !validateString(this.state.form[current.name]);
 		const invalidEmail =
 			current['type'] === 'email' && !validateEmail(this.state.form[current.name]);
 
-		if (hasErrors || invalidEmail) {
-			return this.setState(state => ({
+		if (hasErrors || invalidEmail || invalidString) {
+			this.setState(state => ({
 				...state,
 				errors: {
 					...this.state.errors,
 					[current.name]:
 						(hasErrors && getValidationMessage(current, this.state)) ||
 						(invalidEmail && 'Email is not valid') ||
+						(invalidString && 'This entry seems not valid...') ||
 						'Something went wrong',
 				},
 			}));
+			return false;
 		}
 		return true;
 	};
@@ -154,12 +162,13 @@ export class FormMultiStep extends React.Component<FormMultiStepProps, State> {
 			state => ({
 				...state,
 				errors: {},
+				valid: false,
 				form: {
 					...state.form,
 					[name]: value,
 				},
 			}),
-			() => this.props.onChange(this.state)
+			() => (this.props.onChange(this.state))
 		);
 	};
 
@@ -180,7 +189,7 @@ export class FormMultiStep extends React.Component<FormMultiStepProps, State> {
 
 	render(): JSX.Element {
 		const { id, className, formSchema } = this.props;
-		const { form, currentStep, complete } = this.state;
+		const { form, currentStep, complete, valid } = this.state;
 		const formStepData = formSchema[currentStep];
 		const maxSteps = Object.keys(form).length;
 		const hasErrors = this.state.errors[formStepData.name];
@@ -231,6 +240,7 @@ export class FormMultiStep extends React.Component<FormMultiStepProps, State> {
 									value={form[formStepData.name]}
 									info={formStepData.info}
 									errors={hasErrors}
+									valid={valid}
 									status={formStepData.status}
 									onChange={(name, event) =>
 										this.handleInputChange(name, event.target.value)

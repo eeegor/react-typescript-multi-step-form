@@ -10,6 +10,7 @@ export interface InputControlProps {
 	id: string;
 	className?: string;
 	required?: boolean;
+	valid?: boolean;
 	type?: 'text' | 'email' | 'radio' | 'select-radio' | 'submit';
 	status?: 'success' | 'danger';
 	errors?: string;
@@ -17,12 +18,13 @@ export interface InputControlProps {
 
 export class InputControl extends React.Component<InputControlProps> {
 	render(): JSX.Element {
-		const { id, className, children, required, type, status, errors } = this.props;
+		const { id, className, children, required, type, status, errors, valid } = this.props;
 		const cssClass = classnames(
 			`input-control input-control-${type || 'text'}`,
 			status && `input-control--${status}`,
 			required && `input-control--required`,
 			errors && `input-control--danger`,
+			valid && `input-control--success`,
 			className
 		);
 

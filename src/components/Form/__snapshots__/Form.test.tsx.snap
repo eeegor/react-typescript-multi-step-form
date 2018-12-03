@@ -4,6 +4,7 @@ exports[`Form renders markup correctly 1`] = `
 <form
   className="form"
   id="first"
+  noValidate={true}
   onSubmit={[Function]}
 >
   <div

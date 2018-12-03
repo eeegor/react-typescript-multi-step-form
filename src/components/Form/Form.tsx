@@ -21,7 +21,12 @@ export class Form extends React.Component<Props> {
 		const cssClassesContainer = classnames(`${cssClass}__container`);
 
 		return (
-			<form id={id} className={cssClasses} onSubmit={form => onSubmit && onSubmit(form)}>
+			<form
+				id={id}
+				className={cssClasses}
+				onSubmit={form => onSubmit && onSubmit(form)}
+				noValidate={true}
+			>
 				<div className={cssClassesContainer}>{children}</div>
 			</form>
 		);

@@ -18,6 +18,7 @@ export interface InputControlTextProps {
 	className?: string;
 	required?: boolean;
 	errors?: string;
+	valid?: boolean;
 	onChange?: (name: string, event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -35,6 +36,7 @@ export class InputControlText extends React.Component<InputControlTextProps> {
 			status,
 			info,
 			errors,
+			valid,
 		} = this.props;
 
 		return (
@@ -44,6 +46,7 @@ export class InputControlText extends React.Component<InputControlTextProps> {
 				status={status}
 				className={classnames(className)}
 				errors={errors}
+				valid={valid}
 			>
 				<Label className="input-control__label" htmlFor={id || name} label={label} />
 				<Info className="input-control__info" label={info} />
