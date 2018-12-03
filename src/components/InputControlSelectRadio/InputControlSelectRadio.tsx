@@ -46,7 +46,7 @@ export class InputControlSelectRadio extends React.Component<InputControlSelectR
 				className={classnames(className)}
 				errors={errors}
 			>
-				<Label className="input-control__label" htmlFor={id || name} label={label || ''} />
+				<Label className="input-control__label" htmlFor={id} label={label || ''} />
 				<Info className="input-control__info" label={info || ''} />
 				{errors && <Info className="input-control__errors" label={errors} />}
 				<div className="input-control-select-radio__inputs">
