@@ -15,7 +15,6 @@ const formMultiStepSchema: FormMultiStepSchema = {
 		name: 'name',
 		label: 'Your full name',
 		value: '',
-		status: 'danger',
 		info: 'All data will be handled with care',
 	},
 	2: {
@@ -23,7 +22,6 @@ const formMultiStepSchema: FormMultiStepSchema = {
 		required: true,
 		id: 'email',
 		name: 'email',
-		status: 'success',
 		label: 'Your email address',
 		info: 'All data will be handled with care',
 	},

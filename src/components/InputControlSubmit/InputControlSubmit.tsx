@@ -48,7 +48,7 @@ export class InputControlSubmit extends React.Component<InputControlSubmitProps>
 				{publicFormFields && <FormSummary formFields={publicFormFields} />}
 
 				<Button
-					className={`input-control__input input-submit`}
+					className={`input-control-submit__submit`}
 					size="large"
 					type="success"
 					onClick={() => onClick && onClick()}

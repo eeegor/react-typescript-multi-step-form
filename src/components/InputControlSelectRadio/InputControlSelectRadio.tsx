@@ -45,18 +45,20 @@ export class InputControlSelectRadio extends React.Component<InputControlSelectR
 			>
 				<Label className="input-control__label" htmlFor={id || name} label={label || ''} />
 				<Info className="input-control__info" label={info || ''} />
-				{values.map((item: string, index: number) => (
-					<InputControlRadio
-						id={`${id}-${index + 1}`}
-						required={required}
-						key={index}
-						name={name}
-						label={item}
-						value={item || ''}
-						defaultChecked={defaultChecked === item}
-						onChange={(radio, event) => onChange && onChange(radio, event)}
-					/>
-				))}
+				<div className="input-control-select-radio__inputs">
+					{values.map((item: string, index: number) => (
+						<InputControlRadio
+							id={`${id}-${index + 1}`}
+							required={required}
+							key={index}
+							name={name}
+							label={item}
+							value={item || ''}
+							defaultChecked={defaultChecked === item}
+							onChange={(radio, event) => onChange && onChange(radio, event)}
+						/>
+					))}
+				</div>
 			</InputControl>
 		);
 	}
