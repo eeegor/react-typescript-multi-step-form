@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { InputControlRadio } from './InputControlRadio';
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 
 describe('InputControlRadio', () => {
 	const callback = jest.fn();
@@ -34,5 +34,19 @@ describe('InputControlRadio', () => {
 				.first()
 				.text()
 		).toEqual(info);
+	});
+
+	it('should handle defaultChecked', () => {
+		const wrapper = shallow(
+			<InputControlRadio defaultChecked={true} info={'Hello'} {...testData} />
+		);
+		expect(wrapper.hasClass('input-control--checked')).toEqual(true);
+	});
+
+	it('should handle value', () => {
+		const wrapper = shallow(
+			<InputControlRadio id="name" name="name" value="" info={'Hello'} />
+		);
+		expect(wrapper.find('.input-control__input').text()).toEqual('');
 	});
 });

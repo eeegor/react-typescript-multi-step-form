@@ -55,7 +55,7 @@ export class InputControlRadio extends React.Component<InputControlRadioProps> {
 					defaultChecked={defaultChecked || false}
 					autoFocus={defaultChecked || autoFocus || false}
 				/>
-				<Label className="input-control__label" htmlFor={id || name} label={label} />
+				<Label className="input-control__label" htmlFor={id} label={label} />
 				<Info className="input-control__info" label={info} />
 			</InputControl>
 		);
