@@ -1,19 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`InputSelectRadio renders markup correctly 1`] = `
+exports[`InputGroupSelectRadio renders markup correctly 1`] = `
 <div
-  className="input-select input-select-radio"
+  className="input-group input-group-select-radio"
+  id="input-group-name"
 >
   <label
-    className="label"
-    htmlFor="salary"
+    className="label input-group__label"
+    htmlFor="name"
   >
     Your Name
   </label>
   <div
     className="input-group input-group-radio"
+    id="input-group-name-0"
   >
     <input
+      autoFocus={false}
       className="input-group__input input-radio"
       defaultChecked={false}
       id="name-0"
@@ -23,7 +26,7 @@ exports[`InputSelectRadio renders markup correctly 1`] = `
       value="one"
     />
     <label
-      className="input-group__label"
+      className="label input-group__label"
       htmlFor="name-0"
     >
       one
@@ -31,8 +34,10 @@ exports[`InputSelectRadio renders markup correctly 1`] = `
   </div>
   <div
     className="input-group input-group-radio"
+    id="input-group-name-1"
   >
     <input
+      autoFocus={false}
       className="input-group__input input-radio"
       defaultChecked={false}
       id="name-1"
@@ -42,7 +47,7 @@ exports[`InputSelectRadio renders markup correctly 1`] = `
       value="two"
     />
     <label
-      className="input-group__label"
+      className="label input-group__label"
       htmlFor="name-1"
     >
       two

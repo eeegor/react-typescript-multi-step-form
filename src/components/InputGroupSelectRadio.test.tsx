@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { InputSelectRadio } from './InputSelectRadio';
+import { InputGroupSelectRadio } from './InputGroupSelectRadio';
 import { mount } from 'enzyme';
 
-describe('InputSelectRadio', () => {
+describe('InputGroupSelectRadio', () => {
 	const callback = jest.fn();
 	const testData = {
 		id: 'name',
@@ -14,25 +14,35 @@ describe('InputSelectRadio', () => {
 	};
 
 	it('renders markup correctly', () => {
-		const component = <InputSelectRadio {...testData} />;
+		const component = <InputGroupSelectRadio {...testData} />;
 		const tree = renderer.create(component).toJSON();
 		expect(tree).toMatchSnapshot();
 	});
 
 	it('should adopt a valid status attribute', () => {
 		const status = 'danger';
-		const wrapper = mount(<InputSelectRadio status={status} {...testData} />);
-		expect(wrapper.find('.input-select').hasClass('input-select--danger')).toEqual(true);
+		const wrapper = mount(<InputGroupSelectRadio status={status} {...testData} />);
+		expect(
+			wrapper
+				.find('.input-group')
+				.first()
+				.hasClass('input-group--danger')
+		).toEqual(true);
 	});
 
 	it('should adopt a valid info attribute', () => {
 		const info = 'test';
-		const wrapper = mount(<InputSelectRadio info={info} {...testData} />);
-		expect(wrapper.find('.input-select__info').text()).toEqual('test');
+		const wrapper = mount(<InputGroupSelectRadio info={info} {...testData} />);
+		expect(
+			wrapper
+				.find('.input-group__info')
+				.first()
+				.text()
+		).toEqual('test');
 	});
 
 	it('change event works', () => {
-		const wrapper = mount(<InputSelectRadio {...testData} />);
+		const wrapper = mount(<InputGroupSelectRadio {...testData} />);
 		wrapper
 			.find('input[type="radio"]')
 			.first()
