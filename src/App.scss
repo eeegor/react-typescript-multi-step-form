@@ -1,0 +1,10 @@
+.app {
+	height: 100vh;
+    overflow: hidden;
+    overflow-y: scroll;
+	width: 100%;
+	
+	> .container {
+		height: 100%;
+	}
+}
