@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputControl renders markup correctly 1`] = `
+<div
+  className="input-control input-control-text"
+  id="input-control-a-unique-id"
+/>
+`;
