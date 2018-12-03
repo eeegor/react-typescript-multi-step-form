@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormControls renders markup correctly 1`] = `
+<div
+  className="form-controls"
+>
+  <div
+    className="form-controls__back"
+    onClick={[Function]}
+  >
+    <svg
+      className="icon-back"
+      height="36"
+      id="icon-back"
+      version="1.1"
+      viewBox="0 0 512 512"
+      width="36"
+      xmlSpace="preserve"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
+    >
+      <polygon
+        fill="#eee"
+        points="352,128.4 319.7,96 160,256 160,256 160,256 319.7,416 352,383.6 224.7,256 "
+      />
+    </svg>
+  </div>
+  <div
+    className="form-progress"
+  >
+    <div
+      className="form-progress__indicator-bar"
+      style={
+        Object {
+          "width": "0%",
+        }
+      }
+    />
+    <div
+      className="form-progress__background-bar"
+    />
+  </div>
+</div>
+`;
