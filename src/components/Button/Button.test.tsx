@@ -20,7 +20,7 @@ describe('Button', () => {
 		const wrapper = shallow(<Button size="small">Hello</Button>);
 		expect(wrapper.hasClass('button--small')).toEqual(true);
 	});
-	
+
 	it('should generate a large button', () => {
 		const wrapper = shallow(<Button size="large">Hello</Button>);
 		expect(wrapper.hasClass('button--large')).toEqual(true);

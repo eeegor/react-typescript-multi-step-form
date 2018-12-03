@@ -107,7 +107,7 @@ export class FormMultiStep extends React.Component<FormMultiStepProps, State> {
 
 	gotoNextStep = (): void => {
 		const maxSteps = Object.keys(this.state.form).length;
-		
+
 		if (this.validateInput()) {
 			this.setState(state => ({
 				...state,
@@ -168,7 +168,7 @@ export class FormMultiStep extends React.Component<FormMultiStepProps, State> {
 					[name]: value,
 				},
 			}),
-			() => (this.props.onChange(this.state))
+			() => this.props.onChange(this.state)
 		);
 	};
 

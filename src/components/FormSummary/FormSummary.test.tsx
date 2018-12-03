@@ -22,7 +22,9 @@ describe('FormSummary', () => {
 	});
 
 	it('should adopt a label', () => {
-		const wrapper = mount(<FormSummary label="hello-label" gotoStep={callback} formFields={{ name: '' }} />);
+		const wrapper = mount(
+			<FormSummary label="hello-label" gotoStep={callback} formFields={{ name: '' }} />
+		);
 		expect(wrapper.find('.label')).toHaveLength(1);
 	});
 });
