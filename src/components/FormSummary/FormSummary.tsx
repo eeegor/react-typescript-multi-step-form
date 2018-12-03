@@ -30,6 +30,7 @@ export class FormSummary extends React.Component<Props> {
 							</div>
 							<div className="table__row__edit">
 								<Button
+									className="form-summary__edit"
 									size="small"
 									onClick={() => gotoStep && gotoStep(index + 1)}
 								>

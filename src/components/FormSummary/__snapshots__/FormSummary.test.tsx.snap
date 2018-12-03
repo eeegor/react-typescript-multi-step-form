@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormSummary renders markup correctly 1`] = `
+<div
+  className="form-summary"
+>
+  <div
+    className="table"
+  >
+    <div
+      className="table__row"
+    >
+      <div
+        className="table__row__column"
+      >
+        <div
+          className="table__row__label"
+        >
+          name
+        </div>
+        <div
+          className="table__row__value"
+        >
+          
+        </div>
+      </div>
+      <div
+        className="table__row__edit"
+      >
+        <button
+          className="button button--small form-summary__edit"
+          onClick={[Function]}
+          type="button"
+        >
+          Edit
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;
