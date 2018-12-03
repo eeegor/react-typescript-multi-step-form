@@ -81,13 +81,13 @@ const validateEmail = (value: string): boolean =>
 
 const getValidationMessage = (current: object, state: State) => {
 	switch (current['type']) {
+		case 'radio':
+			return 'You need to select one item';
 		case 'email':
 			return 'Email is required';
 		case 'text':
 		default:
 			return 'This field is required';
-		case 'radio':
-			return 'You need to select one item';
 	}
 };
 
