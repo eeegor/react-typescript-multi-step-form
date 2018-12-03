@@ -1,6 +1,11 @@
+.input-group__label {
+	font-size: 1.5rem;
+	display: inline-flex;
+	margin-bottom: 1rem;
+}
+
 .input-group__info {
-	margin-bottom: 0.5rem;
-	max-width: 80%;
+	margin-bottom: 1rem;
 }
 
 .input-group--danger,
