@@ -1,8 +1,7 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
 import { InputGroupText } from './InputGroupText';
-import { mount, shallow } from 'enzyme';
+import { mount } from 'enzyme';
 
 describe('InputGroupText', () => {
 	const callback = jest.fn();
@@ -29,12 +28,22 @@ describe('InputGroupText', () => {
 	it('should adopt a valid info attribute', () => {
 		const info = 'test';
 		const wrapper = mount(<InputGroupText info={info} {...testData} />);
-		expect(wrapper.find('.input-group__info').text()).toEqual('test');
+		expect(
+			wrapper
+				.find('.input-group__info')
+				.first()
+				.text()
+		).toEqual('test');
 	});
 
 	it('should adopt a valid status attribute', () => {
 		const status = 'danger';
 		const wrapper = mount(<InputGroupText status={status} {...testData} />);
-		expect(wrapper.find('.input-group').hasClass('input-group--danger')).toEqual(true);
+		expect(
+			wrapper
+				.find('.input-group')
+				.last()
+				.hasClass('input-group--danger')
+		).toEqual(true);
 	});
 });

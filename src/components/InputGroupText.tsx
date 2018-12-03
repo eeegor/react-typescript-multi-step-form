@@ -4,54 +4,54 @@
 
 import * as React from 'react';
 import * as classnames from 'classnames';
+import { InputGroup } from './InputGroup';
+import { Label } from './Label';
+import { Info } from './Info';
 import './InputGroupText.scss';
 
-export interface Props {
+export interface InputGroupTextProps {
 	id: string;
 	name: string;
-	value: string;
+	value?: string;
 	label?: string;
-	type?: 'text' | 'email';
 	info?: string;
+	type?: 'text' | 'email';
 	status?: 'success' | 'danger';
+	className?: string;
+	required?: boolean;
 	onChange?: (name: string, event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export interface State {}
-
-export class InputGroupText extends React.Component<Props, State> {
-	public static defaultProps: Partial<Props> = {
-		type: 'text',
-	};
-
-	constructor(props: Props) {
-		super(props);
-	}
-
+export class InputGroupText extends React.Component<InputGroupTextProps> {
 	render(): JSX.Element {
-		const { id, value, onChange, label, type, name, status, info } = this.props;
-		const cssClass = classnames(
-			`input-group input-group-${type}`,
-			status && `input-group--${status}`
-		);
+		const {
+			id,
+			className,
+			required,
+			value,
+			onChange,
+			label,
+			type,
+			name,
+			status,
+			info,
+		} = this.props;
 
 		return (
-			<div id={id} className={cssClass}>
-				{label && (
-					<label className="input-group__label" htmlFor={name}>
-						{label}
-					</label>
-				)}
-				{info && <small className="input-group__info">{info}</small>}
+			<InputGroup id={id} type={type} status={status} className={classnames(className)}>
+				<Label className="input-group__label" htmlFor={id || name} label={label} />
+				<Info className="input-group__info" label={info} />
 				<input
-					className="input-group__input input-text"
+					className={`input-group__input input-${type || 'text'}`}
 					id={name}
 					name={name}
 					type={type}
 					onChange={event => onChange && onChange(name, event)}
-					value={value}
+					value={value || ''}
+					autoFocus={true}
+					required={required}
 				/>
-			</div>
+			</InputGroup>
 		);
 	}
 }

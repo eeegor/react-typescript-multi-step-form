@@ -3,20 +3,20 @@
 exports[`InputGroupText renders markup correctly 1`] = `
 <div
   className="input-group input-group-text"
-  id="name"
+  id="input-group-name"
 >
   <label
-    className="input-group__label"
+    className="label input-group__label"
     htmlFor="name"
   >
     Your Name
   </label>
   <input
+    autoFocus={true}
     className="input-group__input input-text"
     id="name"
     name="name"
     onChange={[Function]}
-    type="text"
     value="Bob"
   />
 </div>
