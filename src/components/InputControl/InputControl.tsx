@@ -21,7 +21,7 @@ export class InputControl extends React.Component<InputControlProps> {
 		const cssClass = classnames(
 			`input-control input-control-${type || 'text'}`,
 			status && `input-control--${status}`,
-			required && `input-control--${required}`,
+			required && `input-control--required`,
 			errors && `input-control--danger`,
 			className
 		);
