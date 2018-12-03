@@ -3,61 +3,89 @@
  */
 
 import * as React from 'react';
+import { FormMultiStep, FormMultiStepSchema } from './components/FormMultiStep';
 import './index.scss';
 import './App.scss';
-import { FormMultiStep, FormSchema } from './components/FormMultiStep';
-import { Props as InputGroupTextProps } from './components/InputGroupText';
-import { Props as InputSelectRadioProps } from './components/InputSelectRadio';
 
-const formMultiStepSchema: { [key: number]: InputGroupTextProps | InputSelectRadioProps } = {
-	1: { type: 'text', id: 'name', name: 'name', label: 'Your full name', value: 'Demo' },
+const formMultiStepSchema: FormMultiStepSchema = {
+	1: {
+		type: 'text',
+		required: true,
+		id: 'name',
+		name: 'name',
+		label: 'Your full name',
+		value: '',
+		status: 'danger',
+		info: 'All data will be handled with care',
+	},
 	2: {
 		type: 'email',
+		required: true,
 		id: 'email',
 		name: 'email',
-		label: 'Your email',
-		value: 'info@example.com',
+		status: 'success',
+		label: 'Your email address',
+		info: 'All data will be handled with care',
 	},
-	3: { type: 'text', id: 'phone', name: 'phone', label: 'Your phone', value: '+49 160 3232323' },
+	3: {
+		type: 'text',
+		required: true,
+		id: 'phone',
+		name: 'phone',
+		label: 'Your phone number',
+		info: 'All data will be handled with care',
+	},
 	4: {
-		type: 'select-radio',
+		type: 'radio',
+		required: true,
 		id: 'salary',
 		name: 'salary',
-		label: 'Select you salary',
+		label: 'Your salary',
+		info: 'All data will be handled with care',
 		values: [
-			'€ 0 - € 1.000',
-			'€ 1.000 - € 2.000',
-			'€ 2.000 - € 3.000',
-			'€ 3.000 - € 4.000',
-			'More then € 4.000',
+			'€0 - €1.000',
+			'€1.000 - €2.000',
+			'€2.000 - €3.000',
+			'€3.000 - €4.000',
+			'More than €4.000',
 		],
 	},
+	5: {
+		type: 'submit',
+		required: true,
+		id: 'submit',
+		name: 'submit',
+		label: 'Is this data correct?',
+		value: 'Confirm your details',
+		info: 'All data will be handled with care',
+	},
+};
+
+const formMultiStepDefaultData = {
+	name: 'Bob Walters',
+	email: 'bob@bbw.com',
+	phone: '+199278782',
+	salary: 'More than €4.000',
 };
 
 interface Props {}
 interface State {
-	form: FormSchema;
+	form: object;
 }
 
 export class App extends React.Component<Props, State> {
-	handleFormChange = (form: FormSchema) => {
-		this.setState(state => ({
-			...state,
-			form,
-		}));
-	};
+	handleFormChange = (form: object) => this.setState({ form }, () => console.log(this.state));
 
 	render(): JSX.Element {
 		return (
 			<div className="app">
-				<div className="content">
-					<div className="container">
-						<FormMultiStep
-							id="subscribe"
-							formSchema={formMultiStepSchema}
-							onChange={formData => this.handleFormChange(formData)}
-						/>
-					</div>
+				<div className="container">
+					<FormMultiStep
+						id="subscribe"
+						formSchema={formMultiStepSchema}
+						// formData={formMultiStepDefaultData}
+						onChange={formData => this.handleFormChange(formData.form)}
+					/>
 				</div>
 			</div>
 		);
