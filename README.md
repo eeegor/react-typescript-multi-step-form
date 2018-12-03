@@ -6,6 +6,15 @@ This is an example of a multi-step form implemented with React and Typescript
 
 ## Usage
 
+> 
+> ##### Currently only the following `input-controls` are available:
+>
+> - text
+> - email
+> - radio
+> - submit
+> 
+
 ```typescript
 
 import { FormMultiStep, FormMultiStepSchema } from './components';
