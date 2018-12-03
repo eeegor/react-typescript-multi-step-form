@@ -39,6 +39,7 @@ interface State {
 	currentStep: number;
 	complete: boolean;
 	form: object;
+	errors: object;
 }
 
 const initializeForm = (formSchema: object, formData?: object) =>
@@ -49,6 +50,7 @@ const initialState = (formSchema: object, formData?: object): State => {
 		currentStep: 1,
 		complete: false,
 		form: initializeForm(formSchema, formData),
+		errors: {},
 	};
 };
 
@@ -88,6 +90,16 @@ export class FormMultiStep extends React.Component<FormMultiStepProps, State> {
 
 	gotoNextStep = (): void => {
 		const maxSteps = Object.keys(this.state.form).length;
+		const current = this.props.formSchema[this.state.currentStep];
+		if (this.state.form[current.name] === '') {
+			return this.setState(state => ({
+				...state,
+				errors: {
+					...this.state.errors,
+					[current.name]: "Very bad. I'm dissapointed",
+				},
+			}));
+		}
 		this.setState(state => ({
 			...state,
 			complete: false,
@@ -143,6 +155,7 @@ export class FormMultiStep extends React.Component<FormMultiStepProps, State> {
 		const { form, currentStep, complete } = this.state;
 		const formStepData = formSchema[currentStep];
 		const maxSteps = Object.keys(form).length;
+		const hasErrors = this.state.errors[formStepData.name] && 'danger';
 
 		return (
 			<div id={`form-multi-step-${id}`} className={classnames('form-multi-step', className)}>
@@ -187,7 +200,7 @@ export class FormMultiStep extends React.Component<FormMultiStepProps, State> {
 									type={formStepData.type}
 									value={form[formStepData.name]}
 									info={formStepData.info}
-									status={formStepData.status}
+									status={hasErrors || formStepData.status}
 									onChange={(name, event) =>
 										this.handleInputChange(name, event.target.value)
 									}

@@ -81,7 +81,7 @@ export class App extends React.Component<Props, State> {
 					<FormMultiStep
 						id="subscribe"
 						formSchema={formMultiStepSchema}
-						formData={formMultiStepDefaultData}
+						// formData={formMultiStepDefaultData}
 						onChange={formData => this.handleFormChange(formData.form)}
 					/>
 				</div>
