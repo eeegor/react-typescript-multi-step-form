@@ -1,5 +1,7 @@
 # Multi-step form with React & Typescript
 
+![](20181203-143018-form-multi-step.gif)
+
 This is an example of a multi-step form implemented with React and Typescript
 
 ## Usage
