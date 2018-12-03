@@ -47,7 +47,7 @@ export class InputGroupSelectRadio extends React.Component<InputGroupSelectRadio
 				<Info className="input-group__info" label={info || ''} />
 				{values.map((item: string, index: number) => (
 					<InputGroupRadio
-						id={`${id}-${index}`}
+						id={`${id}-${index + 1}`}
 						required={required}
 						key={index}
 						name={name}
