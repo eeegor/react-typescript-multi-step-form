@@ -77,8 +77,13 @@ const prepareFormData = (formData?: object): object | undefined => {
 	return formData || undefined;
 };
 
-const getValidationMessage = (type: string) => {
-	switch (type) {
+const validateEmail = (value: string): boolean =>
+	/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+		`${value}`
+	);
+
+const getValidationMessage = (current: object, state: State) => {
+	switch (current['type']) {
 		case 'email':
 			return 'Email is required';
 		case 'text':
@@ -103,20 +108,13 @@ export class FormMultiStep extends React.Component<FormMultiStepProps, State> {
 	gotoNextStep = (): void => {
 		const maxSteps = Object.keys(this.state.form).length;
 		const current = this.props.formSchema[this.state.currentStep];
-		if (this.state.form[current.name] === '') {
-			return this.setState(state => ({
+		if (this.validateInput(current)) {
+			this.setState(state => ({
 				...state,
-				errors: {
-					...this.state.errors,
-					[current.name]: getValidationMessage(current.type),
-				},
+				complete: false,
+				currentStep: state.currentStep < maxSteps ? state.currentStep + 1 : maxSteps,
 			}));
 		}
-		this.setState(state => ({
-			...state,
-			complete: false,
-			currentStep: state.currentStep < maxSteps ? state.currentStep + 1 : maxSteps,
-		}));
 	};
 
 	gotoStep = (step: number): void => {
@@ -126,6 +124,25 @@ export class FormMultiStep extends React.Component<FormMultiStepProps, State> {
 			complete: false,
 			currentStep: step > 0 ? (step < maxSteps ? step : maxSteps) : 1,
 		}));
+	};
+
+	validateInput = (current: FormMultiStepAllowedTypes) => {
+		const hasErrors = this.state.form[current.name] === '';
+		const invalidEmail =
+			current['type'] === 'email' && !validateEmail(this.state.form[current.name]);
+
+		if (hasErrors || invalidEmail) {
+			return this.setState(state => ({
+				...state,
+				errors: {
+					...this.state.errors,
+					[current.name]:
+						(hasErrors && getValidationMessage(current, this.state)) ||
+						(invalidEmail && 'Email is not valid') || 'Something went wrong',
+				},
+			}));
+		}
+		return true;
 	};
 
 	handleFormSubmit = (form: React.FormEvent<HTMLFormElement>): void => {
