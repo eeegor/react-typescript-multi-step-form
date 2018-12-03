@@ -1,3 +1,5 @@
+@import '../variables';
+
 .input-group__label {
 	font-size: 1.5rem;
 	display: inline-flex;
@@ -11,19 +13,19 @@
 .input-group--danger,
 .input-select--danger {
 	small {
-		color: #f55;
+		color: $color-danger;
 	}
 	input {
-		border-color: #f55;
+		border-color: $color-danger;
 	}
 }
 
 .input-group--success,
 .input-select--success {
 	small {
-		color: #2d7;
+		color: $color-success;
 	}
 	input {
-		border-color: #2d7;
+		border-color: $color-success;
 	}
 }
