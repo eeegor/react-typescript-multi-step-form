@@ -1,6 +1,9 @@
+@import '../../variables';
+
+
 .input-radio {
 	background-color: initial;
-	cursor: default;
+	cursor: pointer;
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -10,14 +13,38 @@
 	text-align: center;
 	display: inline-flex;
 	position: relative;
-	top: 0.1rem;
 	margin-right: 0.5rem;
 }
 
-.input-control-radio .input-control__label {
-	font-size: 1rem;
-	font-weight: 400;
-	position: relative;
-	margin-bottom: 0;
-	top: 2px;
+.input-control-radio {
+	display: inline-flex;
+	padding: 0 1.5rem;
+	margin-right: 0.75rem;
+	margin-top: 0.75rem;
+	align-items: center;
+	justify-items: center;
+	border-radius: 2rem;
+	color: $color-grey-dark;
+	border: 1px solid rgba($color-border, 0.5);
+	background-color: white;
+	box-shadow: 0 2px 1rem 0 rgba(black, 0.05);
+	transition: border-color 0.25s ease-in-out, box-shadow 0.15s ease-in-out;
+
+	.input-control__label {
+		font-size: 1rem;
+		font-weight: 400;
+		position: relative;
+		margin-bottom: 0;
+		padding: 0.9rem 0 0.75rem 0;
+		cursor: pointer;
+	}
+
+	&.input-control--checked {
+		border-color: $color-success;
+		box-shadow: 0 4px 1rem 0 rgba(black, 0.1);
+
+		.input-control__label {
+			font-weight: 700;
+		}
+	}	
 }
