@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
-import { InputGroupText } from './InputGroupText';
+import { InputControlText } from './InputControlText';
 
-describe('InputGroupText', () => {
+describe('InputControlText', () => {
 	const callback = jest.fn();
 	const testData = {
 		id: 'name',
@@ -14,23 +14,23 @@ describe('InputGroupText', () => {
 	};
 
 	it('renders markup correctly', () => {
-		const component = <InputGroupText {...testData} />;
+		const component = <InputControlText {...testData} />;
 		const tree = renderer.create(component).toJSON();
 		expect(tree).toMatchSnapshot();
 	});
 
 	it('change event works', () => {
-		const wrapper = mount(<InputGroupText {...testData} />);
-		wrapper.find('.input-group__input').simulate('change');
+		const wrapper = mount(<InputControlText {...testData} />);
+		wrapper.find('.input-control__input').simulate('change');
 		expect(callback).toHaveBeenCalledTimes(1);
 	});
 
 	it('should adopt a valid info attribute', () => {
 		const info = 'test';
-		const wrapper = mount(<InputGroupText info={info} {...testData} />);
+		const wrapper = mount(<InputControlText info={info} {...testData} />);
 		expect(
 			wrapper
-				.find('.input-group__info')
+				.find('.input-control__info')
 				.first()
 				.text()
 		).toEqual('test');
@@ -38,12 +38,12 @@ describe('InputGroupText', () => {
 
 	it('should adopt a valid status attribute', () => {
 		const status = 'danger';
-		const wrapper = mount(<InputGroupText status={status} {...testData} />);
+		const wrapper = mount(<InputControlText status={status} {...testData} />);
 		expect(
 			wrapper
-				.find('.input-group')
+				.find('.input-control')
 				.last()
-				.hasClass('input-group--danger')
+				.hasClass('input-control--danger')
 		).toEqual(true);
 	});
 });

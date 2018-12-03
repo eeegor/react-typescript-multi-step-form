@@ -8,14 +8,17 @@ import { FormSummary } from './FormSummary/FormSummary';
 import { IconBack } from './IconBack/IconBack';
 import { IconSuccess } from './IconSuccess/IconSuccess';
 import { Info } from './Info/Info';
-import { InputGroup } from './InputGroup/InputGroup';
-import { InputGroupRadio } from './InputGroupRadio/InputGroupRadio';
+import { InputControl } from './InputControl/InputControl';
+import { InputControlRadio } from './InputControlRadio/InputControlRadio';
 import {
-	InputGroupSelectRadio,
-	InputGroupSelectRadioProps,
-} from './InputGroupSelectRadio/InputGroupSelectRadio';
-import { InputGroupSubmit, InputGroupSubmitProps } from './InputGroupSubmit/InputGroupSubmit';
-import { InputGroupText, InputGroupTextProps } from './InputGroupText/InputGroupText';
+	InputControlSelectRadio,
+	InputControlSelectRadioProps,
+} from './InputControlSelectRadio/InputControlSelectRadio';
+import {
+	InputControlSubmit,
+	InputControlSubmitProps,
+} from './InputControlSubmit/InputControlSubmit';
+import { InputControlText, InputControlTextProps } from './InputControlText/InputControlText';
 import { Label } from './Label/Label';
 import { FormSuccess } from './FormSuccess/FormSuccess';
 
@@ -32,13 +35,13 @@ export {
 	IconBack,
 	IconSuccess,
 	Info,
-	InputGroup,
-	InputGroupRadio,
-	InputGroupSelectRadio,
-	InputGroupSubmit,
-	InputGroupText,
-	InputGroupTextProps,
-	InputGroupSelectRadioProps,
-	InputGroupSubmitProps,
+	InputControl,
+	InputControlRadio,
+	InputControlSelectRadio,
+	InputControlSubmit,
+	InputControlText,
+	InputControlTextProps,
+	InputControlSelectRadioProps,
+	InputControlSubmitProps,
 	Label,
 };

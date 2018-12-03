@@ -1,13 +1,13 @@
 /**
- * Component InputGroupSubmit
+ * Component InputControlSubmit
  */
 
 import * as React from 'react';
 import * as classnames from 'classnames';
-import { FormSummary, InputGroup, Button, Label, Info } from '..';
-import './InputGroupSubmit.scss';
+import { FormSummary, InputControl, Button, Label, Info } from '..';
+import './InputControlSubmit.scss';
 
-export interface InputGroupSubmitProps {
+export interface InputControlSubmitProps {
 	id: string;
 	name: string;
 	label?: string;
@@ -21,7 +21,7 @@ export interface InputGroupSubmitProps {
 	onClick?: () => void;
 }
 
-export class InputGroupSubmit extends React.Component<InputGroupSubmitProps> {
+export class InputControlSubmit extends React.Component<InputControlSubmitProps> {
 	render(): JSX.Element {
 		const {
 			id,
@@ -41,21 +41,21 @@ export class InputGroupSubmit extends React.Component<InputGroupSubmitProps> {
 		delete publicFormFields['submit'];
 
 		return (
-			<InputGroup id={id} type={'submit'} status={status} className={classnames(className)}>
-				<Label className="input-group__label" htmlFor={id || name} label={label} />
-				<Info className="input-group__info" label={info} />
+			<InputControl id={id} type={'submit'} status={status} className={classnames(className)}>
+				<Label className="input-control__label" htmlFor={id || name} label={label} />
+				<Info className="input-control__info" label={info} />
 
 				{publicFormFields && <FormSummary formFields={publicFormFields} />}
 
 				<Button
-					className={`input-group__input input-submit`}
+					className={`input-control__input input-submit`}
 					size="large"
 					type="success"
 					onClick={() => onClick && onClick()}
 				>
 					{value || 'Submit'}
 				</Button>
-			</InputGroup>
+			</InputControl>
 		);
 	}
 }

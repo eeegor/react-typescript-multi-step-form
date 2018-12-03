@@ -1,13 +1,13 @@
 /**
- * Component InputGroupSelectRadio
+ * Component InputControlSelectRadio
  */
 
 import * as React from 'react';
 import * as classnames from 'classnames';
-import { InputGroupRadio, InputGroup, Label, Info } from '..';
-import './InputGroupSelectRadio.scss';
+import { InputControlRadio, InputControl, Label, Info } from '..';
+import './InputControlSelectRadio.scss';
 
-export interface InputGroupSelectRadioProps {
+export interface InputControlSelectRadioProps {
 	id: string;
 	name: string;
 	label?: string;
@@ -21,7 +21,7 @@ export interface InputGroupSelectRadioProps {
 	onChange?: (name: string, event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export class InputGroupSelectRadio extends React.Component<InputGroupSelectRadioProps> {
+export class InputControlSelectRadio extends React.Component<InputControlSelectRadioProps> {
 	render(): JSX.Element {
 		const {
 			id,
@@ -37,16 +37,16 @@ export class InputGroupSelectRadio extends React.Component<InputGroupSelectRadio
 		} = this.props;
 
 		return (
-			<InputGroup
+			<InputControl
 				id={id}
 				type={'select-radio'}
 				status={status}
 				className={classnames(className)}
 			>
-				<Label className="input-group__label" htmlFor={id || name} label={label || ''} />
-				<Info className="input-group__info" label={info || ''} />
+				<Label className="input-control__label" htmlFor={id || name} label={label || ''} />
+				<Info className="input-control__info" label={info || ''} />
 				{values.map((item: string, index: number) => (
-					<InputGroupRadio
+					<InputControlRadio
 						id={`${id}-${index + 1}`}
 						required={required}
 						key={index}
@@ -57,7 +57,7 @@ export class InputGroupSelectRadio extends React.Component<InputGroupSelectRadio
 						onChange={(radio, event) => onChange && onChange(radio, event)}
 					/>
 				))}
-			</InputGroup>
+			</InputControl>
 		);
 	}
 }

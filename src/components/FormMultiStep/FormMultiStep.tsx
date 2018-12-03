@@ -6,12 +6,12 @@ import * as React from 'react';
 import * as classnames from 'classnames';
 import {
 	FormStep,
-	InputGroupText,
-	InputGroupSelectRadio,
-	InputGroupTextProps,
-	InputGroupSelectRadioProps,
-	InputGroupSubmitProps,
-	InputGroupSubmit,
+	InputControlText,
+	InputControlSelectRadio,
+	InputControlTextProps,
+	InputControlSelectRadioProps,
+	InputControlSubmitProps,
+	InputControlSubmit,
 	FormControls,
 	FormSuccess,
 	Button,
@@ -19,9 +19,9 @@ import {
 import './FormMultiStep.scss';
 
 export type FormMultiStepAllowedTypes =
-	| InputGroupTextProps
-	| InputGroupSelectRadioProps
-	| InputGroupSubmitProps;
+	| InputControlTextProps
+	| InputControlSelectRadioProps
+	| InputControlSubmitProps;
 
 export type FormMultiStepSchema = {
 	[key: number]: FormMultiStepAllowedTypes;
@@ -151,7 +151,7 @@ export class FormMultiStep extends React.Component<FormMultiStepProps, State> {
 							onSubmit={formData => this.handleFormSubmit(formData)}
 						>
 							{formStepData.type === 'radio' && (
-								<InputGroupSelectRadio
+								<InputControlSelectRadio
 									id={formStepData.id}
 									required={formStepData.required}
 									name={formStepData.name}
@@ -170,7 +170,7 @@ export class FormMultiStep extends React.Component<FormMultiStepProps, State> {
 								/>
 							)}
 							{(formStepData.type === 'text' || formStepData.type === 'email') && (
-								<InputGroupText
+								<InputControlText
 									id={formStepData.id}
 									required={formStepData.required}
 									name={formStepData.name}
@@ -185,7 +185,7 @@ export class FormMultiStep extends React.Component<FormMultiStepProps, State> {
 								/>
 							)}
 							{formStepData.type === 'submit' && (
-								<InputGroupSubmit
+								<InputControlSubmit
 									id={formStepData.id}
 									required={formStepData.required}
 									name={formStepData.name}

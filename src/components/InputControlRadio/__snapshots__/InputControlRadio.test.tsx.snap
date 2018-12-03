@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`InputGroupRadio renders markup correctly 1`] = `
+exports[`InputControlRadio renders markup correctly 1`] = `
 <div
-  className="input-group input-group-radio"
-  id="input-group-name"
+  className="input-control input-control-radio"
+  id="input-control-name"
 >
   <input
     autoFocus={false}
-    className="input-group__input input-radio"
+    className="input-control__input input-radio"
     defaultChecked={false}
     id="name"
     name="name"
@@ -16,7 +16,7 @@ exports[`InputGroupRadio renders markup correctly 1`] = `
     value="Bob"
   />
   <label
-    className="label input-group__label"
+    className="label input-control__label"
     htmlFor="name"
   >
     Your Name

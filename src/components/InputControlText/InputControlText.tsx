@@ -1,13 +1,13 @@
 /**
- * Component InputGroupText
+ * Component InputControlText
  */
 
 import * as React from 'react';
 import * as classnames from 'classnames';
-import { InputGroup, Label, Info } from '..';
-import './InputGroupText.scss';
+import { InputControl, Label, Info } from '..';
+import './InputControlText.scss';
 
-export interface InputGroupTextProps {
+export interface InputControlTextProps {
 	id: string;
 	name: string;
 	value?: string;
@@ -20,7 +20,7 @@ export interface InputGroupTextProps {
 	onChange?: (name: string, event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export class InputGroupText extends React.Component<InputGroupTextProps> {
+export class InputControlText extends React.Component<InputControlTextProps> {
 	render(): JSX.Element {
 		const {
 			id,
@@ -36,11 +36,11 @@ export class InputGroupText extends React.Component<InputGroupTextProps> {
 		} = this.props;
 
 		return (
-			<InputGroup id={id} type={type} status={status} className={classnames(className)}>
-				<Label className="input-group__label" htmlFor={id || name} label={label} />
-				<Info className="input-group__info" label={info} />
+			<InputControl id={id} type={type} status={status} className={classnames(className)}>
+				<Label className="input-control__label" htmlFor={id || name} label={label} />
+				<Info className="input-control__info" label={info} />
 				<input
-					className={`input-group__input input-${type || 'text'}`}
+					className={`input-control__input input-${type || 'text'}`}
 					id={name}
 					name={name}
 					type={type}
@@ -49,7 +49,7 @@ export class InputGroupText extends React.Component<InputGroupTextProps> {
 					autoFocus={true}
 					required={required}
 				/>
-			</InputGroup>
+			</InputControl>
 		);
 	}
 }

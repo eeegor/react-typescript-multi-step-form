@@ -1,13 +1,13 @@
 /**
- * Component InputGroupRadio
+ * Component InputControlRadio
  */
 
 import * as React from 'react';
 import * as classnames from 'classnames';
-import { InputGroup, Label, Info } from '..';
-import './InputGroupRadio.scss';
+import { InputControl, Label, Info } from '..';
+import './InputControlRadio.scss';
 
-export interface InputGroupRadioProps {
+export interface InputControlRadioProps {
 	id: string;
 	name: string;
 	info?: string;
@@ -20,7 +20,7 @@ export interface InputGroupRadioProps {
 	onChange?: (name: string, event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export class InputGroupRadio extends React.Component<InputGroupRadioProps> {
+export class InputControlRadio extends React.Component<InputControlRadioProps> {
 	render(): JSX.Element {
 		const {
 			id,
@@ -36,9 +36,9 @@ export class InputGroupRadio extends React.Component<InputGroupRadioProps> {
 		} = this.props;
 
 		return (
-			<InputGroup id={id} type={'radio'} className={classnames(className)}>
+			<InputControl id={id} type={'radio'} className={classnames(className)}>
 				<input
-					className="input-group__input input-radio"
+					className="input-control__input input-radio"
 					id={id}
 					required={required}
 					name={name}
@@ -48,9 +48,9 @@ export class InputGroupRadio extends React.Component<InputGroupRadioProps> {
 					defaultChecked={defaultChecked || false}
 					autoFocus={defaultChecked || autoFocus || false}
 				/>
-				<Label className="input-group__label" htmlFor={id || name} label={label} />
-				<Info className="input-group__info" label={info} />
-			</InputGroup>
+				<Label className="input-control__label" htmlFor={id || name} label={label} />
+				<Info className="input-control__info" label={info} />
+			</InputControl>
 		);
 	}
 }

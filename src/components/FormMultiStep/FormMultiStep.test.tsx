@@ -86,7 +86,7 @@ describe('FormMultiStep', () => {
 				/>
 			);
 			const form = wrapper.find(`#form-step-1`);
-			const formRadioGroup = form.find('.input-group-select-radio');
+			const formRadioGroup = form.find('.input-control-select-radio');
 			const formSelectRadioInput = formRadioGroup.find('.input-radio').first();
 			formSelectRadioInput.simulate('focus');
 			formSelectRadioInput.simulate('change', nextValue);
@@ -136,7 +136,7 @@ describe('FormMultiStep', () => {
 		const wrapper = mount(
 			<FormMultiStep id="test-submit" formSchema={{ 1: testSet }} onChange={callback} />
 		);
-		const submitGroup = wrapper.find(`.input-group-submit`).first();
+		const submitGroup = wrapper.find(`.input-control-submit`).first();
 		const button = submitGroup.find(`button`).first();
 		button.simulate('focus');
 		button.simulate('click');

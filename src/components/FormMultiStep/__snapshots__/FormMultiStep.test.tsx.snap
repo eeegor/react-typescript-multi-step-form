@@ -54,18 +54,18 @@ exports[`FormMultiStep renders markup correctly 1`] = `
       className="form__container"
     >
       <div
-        className="input-group input-group-text"
-        id="input-group-name"
+        className="input-control input-control-text"
+        id="input-control-name"
       >
         <label
-          className="label input-group__label"
+          className="label input-control__label"
           htmlFor="name"
         >
           Your full name
         </label>
         <input
           autoFocus={true}
-          className="input-group__input input-text"
+          className="input-control__input input-text"
           id="name"
           name="name"
           onChange={[Function]}

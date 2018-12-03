@@ -1,18 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`InputGroupSubmit renders markup correctly 1`] = `
+exports[`InputControlSubmit renders markup correctly 1`] = `
 <div
-  className="input-group input-group-submit"
-  id="input-group-submit"
+  className="input-control input-control-submit"
+  id="input-control-submit"
 >
   <label
-    className="label input-group__label"
+    className="label input-control__label"
     htmlFor="submit"
   >
     Is this data correct?
   </label>
   <small
-    className="info input-group__info"
+    className="info input-control__info"
   >
     All data will be handled with care
   </small>
@@ -24,7 +24,7 @@ exports[`InputGroupSubmit renders markup correctly 1`] = `
     />
   </div>
   <button
-    className="button button--success button--large input-group__input input-submit"
+    className="button button--success button--large input-control__input input-submit"
     onClick={[Function]}
     type="button"
   >

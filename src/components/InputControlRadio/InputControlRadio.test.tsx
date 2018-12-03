@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { InputGroupRadio } from './InputGroupRadio';
+import { InputControlRadio } from './InputControlRadio';
 import { mount } from 'enzyme';
 
-describe('InputGroupRadio', () => {
+describe('InputControlRadio', () => {
 	const callback = jest.fn();
 	const testData = {
 		id: 'name',
@@ -14,23 +14,23 @@ describe('InputGroupRadio', () => {
 	};
 
 	it('renders markup correctly', () => {
-		const component = <InputGroupRadio {...testData} />;
+		const component = <InputControlRadio {...testData} />;
 		const tree = renderer.create(component).toJSON();
 		expect(tree).toMatchSnapshot();
 	});
 
 	it('change event works', () => {
-		const wrapper = mount(<InputGroupRadio {...testData} />);
-		wrapper.find('.input-group__input').simulate('change');
+		const wrapper = mount(<InputControlRadio {...testData} />);
+		wrapper.find('.input-control__input').simulate('change');
 		expect(callback).toHaveBeenCalledTimes(1);
 	});
 
 	it('should adopt a valid info attribute', () => {
 		const info = 'test';
-		const wrapper = mount(<InputGroupRadio info={info} {...testData} />);
+		const wrapper = mount(<InputControlRadio info={info} {...testData} />);
 		expect(
 			wrapper
-				.find('.input-group__info')
+				.find('.input-control__info')
 				.first()
 				.text()
 		).toEqual(info);

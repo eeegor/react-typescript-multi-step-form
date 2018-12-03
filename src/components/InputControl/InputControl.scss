@@ -1,16 +1,16 @@
 @import '../../variables';
 
-.input-group__label {
+.input-control__label {
 	font-size: 1.5rem;
 	display: inline-flex;
 	margin-bottom: 1rem;
 }
 
-.input-group__info {
+.input-control__info {
 	margin-bottom: 1rem;
 }
 
-.input-group--danger,
+.input-control--danger,
 .input-select--danger {
 	small {
 		color: $color-danger;
@@ -20,7 +20,7 @@
 	}
 }
 
-.input-group--success,
+.input-control--success,
 .input-select--success {
 	small {
 		color: $color-success;

@@ -1,12 +1,12 @@
 /**
- * Component InputGroup
+ * Component InputControl
  */
 
 import * as React from 'react';
 import * as classnames from 'classnames';
-import './InputGroup.scss';
+import './InputControl.scss';
 
-export interface InputGroupProps {
+export interface InputControlProps {
 	id: string;
 	className?: string;
 	required?: boolean;
@@ -14,18 +14,18 @@ export interface InputGroupProps {
 	status?: 'success' | 'danger';
 }
 
-export class InputGroup extends React.Component<InputGroupProps> {
+export class InputControl extends React.Component<InputControlProps> {
 	render(): JSX.Element {
 		const { id, className, children, required, type, status } = this.props;
 		const cssClass = classnames(
-			`input-group input-group-${type || 'text'}`,
-			status && `input-group--${status}`,
-			required && `input-group--${required}`,
+			`input-control input-control-${type || 'text'}`,
+			status && `input-control--${status}`,
+			required && `input-control--${required}`,
 			className
 		);
 
 		return (
-			<div id={`input-group-${id}`} className={cssClass}>
+			<div id={`input-control-${id}`} className={cssClass}>
 				{children}
 			</div>
 		);
