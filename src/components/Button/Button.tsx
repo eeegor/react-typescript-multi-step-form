@@ -7,7 +7,7 @@ import * as classnames from 'classnames';
 import './Button.scss';
 
 export interface Props {
-	size?: 'large' | 'lg' | 'small' | 'sm';
+	size?: 'large' | 'small';
 	type?: 'primary' | 'secondary' | 'success' | 'danger' | 'disabled' | 'muted';
 	className?: string;
 	children: string | JSX.Element;
