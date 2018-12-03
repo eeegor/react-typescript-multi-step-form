@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputGroupSubmit renders markup correctly 1`] = `
+<div
+  className="input-group input-group-submit"
+  id="input-group-submit"
+>
+  <label
+    className="label input-group__label"
+    htmlFor="submit"
+  >
+    Is this data correct?
+  </label>
+  <small
+    className="info input-group__info"
+  >
+    All data will be handled with care
+  </small>
+  <div
+    className="form-summary"
+  >
+    <div
+      className="table"
+    />
+  </div>
+  <button
+    className="button button--success button--large input-group__input input-submit"
+    onClick={[Function]}
+    type="button"
+  >
+    Confirm your details
+  </button>
+</div>
+`;
