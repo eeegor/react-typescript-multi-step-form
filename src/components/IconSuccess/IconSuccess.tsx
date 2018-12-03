@@ -17,35 +17,24 @@ export class IconSuccess extends React.Component<Props> {
 		const { id, className, color } = this.props;
 
 		return (
-			<svg
-				id={id}
-				className={classnames('icon-success', className)}
-				version="1.1"
-				xmlns="http://www.w3.org/2000/svg"
-				viewBox="0 0 130.2 130.2"
-				height="160"
-				width="160"
-			>
-				<circle
-					className="icon-success__circle"
-					fill="none"
-					stroke={color || '#333'}
-					strokeWidth="6"
-					strokeMiterlimit="10"
-					cx="65.1"
-					cy="65.1"
-					r="62.1"
-				/>
-				<polyline
-					className="icon-success__check"
-					fill="none"
-					stroke={color || '#333'}
-					strokeWidth="6"
-					strokeLinecap="round"
-					strokeMiterlimit="10"
-					points="100.2,40.2 51.5,88.8 29.8,67.5 "
-				/>
-			</svg>
+			<div className={classnames('icon-success', className)}>
+				<svg xmlns="http://www.w3.org/2000/svg" width="160px" height="160px" viewBox="0 0 72 72">
+					<g fill="none" stroke="#8EC343" strokeWidth="2">
+						<circle
+							className="icon-success__circle"
+							cx="36"
+							cy="36"
+							r="35"
+							style={{strokeDasharray: '240px, 240px', strokeDashoffset: '480px'}}
+						/>
+						<path
+							className="icon-success__path"
+							d="M17.417,37.778l9.93,9.909l25.444-25.393"
+							style={{strokeDasharray: '50px, 50px', strokeDashoffset: '0px'}}
+						/>
+					</g>
+				</svg>
+			</div>
 		);
 	}
 }
