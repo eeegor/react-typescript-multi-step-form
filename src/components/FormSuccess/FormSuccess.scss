@@ -1,6 +1,20 @@
 .form-success {
-	padding: 4rem 0;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	padding: 0;
+	display: flex;
+	align-items: center;
+	overflow-y: scroll;
 	text-align: center;
+
+	&__container {
+		margin: auto;
+		padding: 4rem 0 8rem 0;
+		width: 100%;
+	}
 }
 
 .form-success__reset {
