@@ -8,16 +8,17 @@
 	padding: 0.85rem 1.5rem 0.75rem;
 	border: 0;
 	outline: 0;
-	background: $color-grey-light;
 	border-radius: 4px;
 	justify-content: center;
 	align-items: center;
 	text-transform: uppercase;
 	transition: all 0.2s ease-in-out;
+	color: #fff;
+	background: $color-primary;
 
 	&:hover {
 		color: #fff;
-		background: darken($color-grey-light, 15%);
+		background: darken($color-primary, 15%);
 	}
 
 	&--small {
