@@ -2,6 +2,68 @@
 
 This is an example of a multi-step form implemented with React and Typescript
 
+## Usage
+
+```typescript
+
+import { FormMultiStep, FormMultiStepSchema } from './components';
+
+// Each step currently supports one field, you can create any amount of steps you want. The last step should be a `type: submit` in order to show the summary and confirmation when the user reached the end of the form. 
+
+// Please take a look at the `Interfaces` and `Type` files for further documentation on available fields and options.
+const formMultiStepSchema: FormMultiStepSchema = {
+	1: {
+		type: 'text',
+		id: 'unique-id-of-the-name-control',
+		name: 'name',
+		label: 'Your full name',
+	},
+	2: {
+		type: 'email',
+		id: 'unique-id-of-the-email-control',
+		name: 'email',
+		label: 'Your email address',
+	},
+	3: {
+		type: 'radio',
+		id: 'unique-id-of-the-radio-select-control',
+		name: 'salary',
+		label: 'Your salary',
+		defaultChecked: false,
+		value: '€1.000 - €2.000',
+		values: [
+			'€0 - €1.000',
+			'€1.000 - €2.000',
+			'€2.000 - €3.000',
+			'€3.000 - €4.000',
+			'More than €4.000',
+		],
+	},
+	4: {
+		type: 'submit',
+		id: 'unique-id-of-the-submit-control',
+		name: 'submit',
+		label: 'Is this data correct?',
+		value: 'Confirm your details',
+	},
+};
+
+// If you wish to provide default data to the form:
+const formMultiStepDefaultData = {
+	name: 'Bob Walters',
+	email: 'bob@example.com',
+	salary: 'More than €4.000',
+};
+
+// Providing formData
+<FormMultiStep
+	id="any-id-you-want"
+	formSchema={formMultiStepSchema}
+	formData={formMultiStepDefaultData}
+	onChange={formData => this.handleFormChange(formData.form)}
+/>
+```
+
 
 ## :rocket: Getting started
 
