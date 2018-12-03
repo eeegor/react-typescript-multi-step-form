@@ -8,9 +8,13 @@ This is an example of a multi-step form implemented with React and Typescript
 
 import { FormMultiStep, FormMultiStepSchema } from './components';
 
-// Each step currently supports one field, you can create any amount of steps you want. The last step should be a `type: submit` in order to show the summary and confirmation when the user reached the end of the form. 
+// Each step currently supports one field, you can create any amount of steps 
+// you want. The last step should be a `type: submit` in order to show the 
+// summary and confirmation when the user reached the end of the form. 
 
-// Please take a look at the `Interfaces` and `Type` files for further documentation on available fields and options.
+// Please take a look at the `Interfaces` and `Type` files for further 
+// documentation on available fields and options.
+
 const formMultiStepSchema: FormMultiStepSchema = {
 	1: {
 		type: 'text',
@@ -55,7 +59,7 @@ const formMultiStepDefaultData = {
 	salary: 'More than €4.000',
 };
 
-// Providing formData
+// Initializing a multi-step form with formData
 <FormMultiStep
 	id="any-id-you-want"
 	formSchema={formMultiStepSchema}
