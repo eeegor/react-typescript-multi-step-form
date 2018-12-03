@@ -72,7 +72,7 @@ interface State {
 }
 
 export class App extends React.Component<Props, State> {
-	handleFormChange = (form: object) => this.setState({ form }, () => console.log(this.state));
+	handleFormChange = (form: object) => this.setState({ form });
 
 	render(): JSX.Element {
 		return (
@@ -81,7 +81,7 @@ export class App extends React.Component<Props, State> {
 					<FormMultiStep
 						id="subscribe"
 						formSchema={formMultiStepSchema}
-						// formData={formMultiStepDefaultData}
+						formData={formMultiStepDefaultData}
 						onChange={formData => this.handleFormChange(formData.form)}
 					/>
 				</div>

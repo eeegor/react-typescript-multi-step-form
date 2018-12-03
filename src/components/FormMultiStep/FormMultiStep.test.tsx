@@ -45,7 +45,6 @@ describe('FormMultiStep', () => {
 		it('can change and submit text type input', () => {
 			const testSet = testData[1];
 			const nextValue = { target: { value: testSet.value } };
-			console.log('testSet', testSet);
 			const wrapper = mount(
 				<FormMultiStep id="test-text" formSchema={{ 1: testSet }} onChange={callback} />
 			);
@@ -61,7 +60,6 @@ describe('FormMultiStep', () => {
 		it('can change and submit email type input', () => {
 			const testSet = testData[2];
 			const nextValue = { target: { value: testSet.value } };
-			console.log('testSet', testSet);
 			const wrapper = mount(
 				<FormMultiStep id="test-email" formSchema={{ 1: testSet }} onChange={callback} />
 			);
@@ -77,7 +75,6 @@ describe('FormMultiStep', () => {
 		it('can change and submit select-radio type input', () => {
 			const testSet = testData[3];
 			const nextValue = { target: { value: testSet.values[2] } };
-			console.log('testSet', testSet);
 			const wrapper = mount(
 				<FormMultiStep
 					id="test-select-radio"
@@ -108,7 +105,6 @@ describe('FormMultiStep', () => {
 		formTextGroup.simulate('change', nextValue);
 		formTextGroup.simulate('submit', nextValue);
 		const state = wrapper.state();
-		console.log('state', state);
 		expect(state['currentStep']).toEqual(2);
 	});
 
@@ -127,7 +123,6 @@ describe('FormMultiStep', () => {
 		prev.simulate('focus');
 		prev.simulate('click');
 		const state = wrapper.state();
-		console.log('state', state);
 		expect(state['currentStep']).toEqual(1);
 	});
 
