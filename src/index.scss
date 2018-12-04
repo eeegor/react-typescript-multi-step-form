@@ -131,33 +131,6 @@ label {
 * Components
 */
 
-.layout {
-	display: grid;
-	height: 100vh;
-
-	@media (min-width: 767px) {
-		grid-template-columns: repeat(8, 1fr);
-
-		.content {
-			grid-column: 1/3;
-		}
-
-		.form-multi-step {
-			grid-column: 3/9;
-		}
-	}
-
-	@media (min-width: 1280px) {
-		.content {
-			grid-column: 1/4;
-		}
-
-		.form-multi-step {
-			grid-column: 4/9;
-		}
-	}
-}
-
 .content {
 	padding: 3rem;
 	background: #eee;
