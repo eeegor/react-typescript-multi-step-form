@@ -7,7 +7,7 @@ import * as classnames from 'classnames';
 import { FormSummary, InputControl, Button, Label, Info } from '..';
 import './InputControlSubmit.scss';
 
-export interface InputControlSubmitProps {
+export interface Props {
 	id: string;
 	name: string;
 	label?: string;
@@ -23,7 +23,7 @@ export interface InputControlSubmitProps {
 	gotoStep?: (step: number) => void;
 }
 
-export class InputControlSubmit extends React.Component<InputControlSubmitProps> {
+export class InputControlSubmit extends React.Component<Props> {
 	render(): JSX.Element {
 		const {
 			id,

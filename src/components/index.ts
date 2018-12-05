@@ -12,13 +12,13 @@ import { InputControl } from './InputControl/InputControl';
 import { InputControlRadio } from './InputControlRadio/InputControlRadio';
 import {
 	InputControlSelectRadio,
-	InputControlSelectRadioProps,
+	Props as InputControlSelectRadioProps,
 } from './InputControlSelectRadio/InputControlSelectRadio';
 import {
 	InputControlSubmit,
-	InputControlSubmitProps,
+	Props as InputControlSubmitProps,
 } from './InputControlSubmit/InputControlSubmit';
-import { InputControlText, InputControlTextProps } from './InputControlText/InputControlText';
+import { InputControlText, Props as InputControlTextProps } from './InputControlText/InputControlText';
 import { Label } from './Label/Label';
 import { FormSuccess } from './FormSuccess/FormSuccess';
 

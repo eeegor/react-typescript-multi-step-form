@@ -7,7 +7,7 @@ import * as classnames from 'classnames';
 import { InputControl, Label, Info } from '..';
 import './InputControlText.scss';
 
-export interface InputControlTextProps {
+export interface Props {
 	id: string;
 	name: string;
 	value?: string;
@@ -22,7 +22,7 @@ export interface InputControlTextProps {
 	onChange?: (name: string, event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export class InputControlText extends React.Component<InputControlTextProps> {
+export class InputControlText extends React.Component<Props> {
 	render(): JSX.Element {
 		const {
 			id,

@@ -27,7 +27,7 @@ export type FormMultiStepSchema = {
 	[key: number]: FormMultiStepAllowedTypes;
 };
 
-export interface FormMultiStepProps {
+export interface Props {
 	id: string;
 	className?: string;
 	formSchema: object;
@@ -94,7 +94,7 @@ const getValidationMessage = (current: object, state: State): string => {
 	}
 };
 
-export class FormMultiStep extends React.Component<FormMultiStepProps, State> {
+export class FormMultiStep extends React.Component<Props, State> {
 	state: State = initialState(this.props.formSchema, this.props.formData);
 
 	gotoPrevStep = (): void => {

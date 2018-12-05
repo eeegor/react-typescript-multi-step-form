@@ -6,7 +6,7 @@ import * as React from 'react';
 import * as classnames from 'classnames';
 import './InputControl.scss';
 
-export interface InputControlProps {
+export interface Props {
 	id: string;
 	className?: string;
 	required?: boolean;
@@ -16,7 +16,7 @@ export interface InputControlProps {
 	errors?: string;
 }
 
-export class InputControl extends React.Component<InputControlProps> {
+export class InputControl extends React.Component<Props> {
 	render(): JSX.Element {
 		const { id, className, children, required, type, status, errors, valid } = this.props;
 		const cssClass = classnames(

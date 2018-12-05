@@ -7,7 +7,7 @@ import * as classnames from 'classnames';
 import { InputControlRadio, InputControl, Label, Info } from '..';
 import './InputControlSelectRadio.scss';
 
-export interface InputControlSelectRadioProps {
+export interface Props {
 	id: string;
 	name: string;
 	label?: string;
@@ -22,7 +22,7 @@ export interface InputControlSelectRadioProps {
 	onChange?: (name: string, event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export class InputControlSelectRadio extends React.Component<InputControlSelectRadioProps> {
+export class InputControlSelectRadio extends React.Component<Props> {
 	render(): JSX.Element {
 		const {
 			id,
