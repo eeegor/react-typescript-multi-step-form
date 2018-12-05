@@ -57,13 +57,20 @@ const formMultiStepDefaultData = {
 	salary: 'More than €4.000',
 };
 
+interface FormSchema {
+	name: string;
+	email: string;
+	phone: string;
+	salary: string;
+}
+
 interface Props {}
 interface State {
-	form: object;
+	form: FormSchema;
 }
 
 export class App extends React.Component<Props, State> {
-	handleFormChange = (form: object) => this.setState({ form });
+	handleFormChange = (form: FormSchema) => this.setState({ form });
 
 	render(): JSX.Element {
 		return (
@@ -73,7 +80,7 @@ export class App extends React.Component<Props, State> {
 						id="subscribe"
 						formSchema={formMultiStepSchema}
 						// formData={formMultiStepDefaultData}
-						onChange={formData => this.handleFormChange(formData.form)}
+						onChange={formData => this.handleFormChange(formData.form as FormSchema)}
 					/>
 				</div>
 			</div>
