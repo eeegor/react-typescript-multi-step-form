@@ -2,7 +2,7 @@
  * Component FormMultiStep
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import classnames from 'classnames';
 import {
 	FormStep,
@@ -94,7 +94,7 @@ const getValidationMessage = (current: object, state: State): string => {
 	}
 };
 
-export class FormMultiStep extends React.Component<Props, State> {
+export class FormMultiStep extends Component<Props, State> {
 	state: State = initialState(this.props.formSchema, this.props.formData);
 
 	gotoPrevStep = (): void => {

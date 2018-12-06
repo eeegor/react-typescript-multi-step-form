@@ -2,7 +2,7 @@
  * App
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import { FormMultiStep, FormMultiStepSchema } from './components';
 import './index.scss';
 import './App.scss';
@@ -69,7 +69,7 @@ interface State {
 	form: FormSchema;
 }
 
-export class App extends React.Component<Props, State> {
+export class App extends Component<Props, State> {
 	handleFormChange = (form: FormSchema) => this.setState({ form });
 
 	render(): JSX.Element {
