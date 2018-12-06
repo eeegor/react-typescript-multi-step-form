@@ -2,8 +2,8 @@
  * Component Label
  */
 
-import * as React from 'react';
-import * as classnames from 'classnames';
+import React from 'react';
+import classnames from 'classnames';
 import './Label.scss';
 
 export interface Props {
@@ -12,18 +12,16 @@ export interface Props {
 	label: string | JSX.Element | undefined;
 }
 
-export class Label extends React.Component<Props> {
-	render(): JSX.Element | null {
-		const { className, label, htmlFor } = this.props;
+export const Label = (props: Props): JSX.Element | null => {
+	const { className, label, htmlFor } = props;
 
-		if (!label || label === '') {
-			return null;
-		}
-
-		return (
-			<label className={classnames('label', className)} htmlFor={htmlFor}>
-				{label}
-			</label>
-		);
+	if (!label || label === '') {
+		return null;
 	}
-}
+
+	return (
+		<label className={classnames('label', className)} htmlFor={htmlFor}>
+			{label}
+		</label>
+	);
+};

@@ -2,8 +2,8 @@
  * Component Info
  */
 
-import * as React from 'react';
-import * as classnames from 'classnames';
+import React from 'react';
+import classnames from 'classnames';
 import './Info.scss';
 
 export interface Props {
@@ -11,14 +11,12 @@ export interface Props {
 	label: string | JSX.Element | undefined;
 }
 
-export class Info extends React.Component<Props> {
-	render(): JSX.Element | null {
-		const { className, label } = this.props;
+export const Info = (props: Props): JSX.Element | null => {
+	const { className, label } = props;
 
-		if (!label || label === '') {
-			return null;
-		}
-
-		return <small className={classnames('info', className)}>{label}</small>;
+	if (!label || label === '') {
+		return null;
 	}
-}
+
+	return <small className={classnames('info', className)}>{label}</small>;
+};

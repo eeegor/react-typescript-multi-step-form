@@ -2,7 +2,7 @@
  * App
  */
 
-import * as React from 'react';
+import React from 'react';
 import { FormMultiStep, FormMultiStepSchema } from './components';
 import './index.scss';
 import './App.scss';
@@ -50,19 +50,19 @@ const formMultiStepSchema: FormMultiStepSchema = {
 	},
 };
 
-const formMultiStepDefaultData = {
-	name: 'Bob Walters',
-	email: 'bob@example.com',
-	phone: '+199278782',
-	salary: 'More than €4.000',
-};
-
 interface FormSchema {
 	name: string;
 	email: string;
 	phone: string;
 	salary: string;
 }
+
+const formMultiStepDefaultData = {
+	name: 'Bob Walters',
+	email: 'bob@example.com',
+	phone: '+199278782',
+	salary: 'More than €4.000',
+};
 
 interface Props {}
 interface State {
