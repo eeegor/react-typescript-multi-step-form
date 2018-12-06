@@ -8,7 +8,13 @@ import './Button.scss';
 
 export interface Props {
 	size?: 'large' | 'small';
-	type?: 'primary' | 'secondary' | 'success' | 'danger' | 'disabled' | 'muted';
+	type?:
+		| 'primary'
+		| 'secondary'
+		| 'success'
+		| 'danger'
+		| 'disabled'
+		| 'muted';
 	className?: string;
 	children: string | JSX.Element;
 	onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -34,7 +40,11 @@ export const Button = (props: Props): JSX.Element => {
 	}
 
 	return (
-		<button type="button" className={cssClasses} onClick={event => onClick && onClick(event)}>
+		<button
+			type="button"
+			className={cssClasses}
+			onClick={event => onClick && onClick(event)}
+		>
 			{children}
 		</button>
 	);

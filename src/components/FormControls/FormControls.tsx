@@ -23,7 +23,10 @@ export const FormControls = (props: Props): JSX.Element => {
 				className="form-controls__back"
 				onClick={event => currentStep !== 1 && onBack && onBack(event)}
 			>
-				<IconBack id="icon-back" color={currentStep === 1 ? '#eee' : '#2e3642'} />
+				<IconBack
+					id="icon-back"
+					color={currentStep === 1 ? '#eee' : '#2e3642'}
+				/>
 			</div>
 			<FormProgress maxSteps={maxSteps} currentStep={currentStep} />
 		</div>

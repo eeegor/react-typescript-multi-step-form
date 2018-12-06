@@ -28,24 +28,34 @@ describe('InputControlSubmit', () => {
 
 	it('should adopt a valid `status: danger` attribute', () => {
 		const status = 'danger';
-		const wrapper = mount(<InputControlSubmit {...testData} status={status} />);
-		expect(wrapper.find('.input-control-submit').hasClass('input-control--danger')).toEqual(
-			true
+		const wrapper = mount(
+			<InputControlSubmit {...testData} status={status} />
 		);
+		expect(
+			wrapper
+				.find('.input-control-submit')
+				.hasClass('input-control--danger')
+		).toEqual(true);
 	});
 
 	it('should adopt a valid `status: success` attribute', () => {
 		const status = 'success';
-		const wrapper = mount(<InputControlSubmit {...testData} status={status} />);
-		expect(wrapper.find('.input-control-submit').hasClass('input-control--success')).toEqual(
-			true
+		const wrapper = mount(
+			<InputControlSubmit {...testData} status={status} />
 		);
+		expect(
+			wrapper
+				.find('.input-control-submit')
+				.hasClass('input-control--success')
+		).toEqual(true);
 	});
 
 	it('should render default value if no value provided', () => {
 		const defaultValue = 'Submit';
 		const { value, ...testDataNoValue } = testData;
-		const wrapper = mount(<InputControlSubmit {...testDataNoValue} value={''} />);
+		const wrapper = mount(
+			<InputControlSubmit {...testDataNoValue} value={''} />
+		);
 		expect(wrapper.find('.button').text()).toEqual(defaultValue);
 	});
 

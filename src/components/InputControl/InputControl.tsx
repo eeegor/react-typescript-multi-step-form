@@ -18,7 +18,16 @@ export interface Props {
 }
 
 export const InputControl = (props: Props): JSX.Element => {
-	const { id, className, children, required, type, status, errors, valid } = props;
+	const {
+		id,
+		className,
+		children,
+		required,
+		type,
+		status,
+		errors,
+		valid,
+	} = props;
 	const cssClass = classnames(
 		`input-control input-control-${type || 'text'}`,
 		status && `input-control--${status}`,

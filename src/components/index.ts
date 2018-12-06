@@ -1,7 +1,10 @@
 import { Button } from './Button/Button';
 import { Form } from './Form/Form';
 import { FormControls } from './FormControls/FormControls';
-import { FormMultiStep, FormMultiStepSchema } from './FormMultiStep/FormMultiStep';
+import {
+	FormMultiStep,
+	FormMultiStepSchema,
+} from './FormMultiStep/FormMultiStep';
 import { FormProgress } from './FormProgress/FormProgress';
 import { FormStep } from './FormStep/FormStep';
 import { FormSummary } from './FormSummary/FormSummary';

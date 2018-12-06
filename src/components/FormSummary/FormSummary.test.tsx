@@ -7,13 +7,17 @@ describe('FormSummary', () => {
 	const callback = jest.fn();
 
 	it('renders markup correctly', () => {
-		const wrapper = <FormSummary gotoStep={callback} formFields={{ name: '' }} />;
+		const wrapper = (
+			<FormSummary gotoStep={callback} formFields={{ name: '' }} />
+		);
 		const tree = renderer.create(wrapper).toJSON();
 		expect(tree).toMatchSnapshot();
 	});
 
 	it('click event works', () => {
-		const wrapper = mount(<FormSummary gotoStep={callback} formFields={{ name: '' }} />);
+		const wrapper = mount(
+			<FormSummary gotoStep={callback} formFields={{ name: '' }} />
+		);
 		wrapper
 			.find('.form-summary__edit')
 			.first()
@@ -23,7 +27,11 @@ describe('FormSummary', () => {
 
 	it('should adopt a label', () => {
 		const wrapper = mount(
-			<FormSummary label="hello-label" gotoStep={callback} formFields={{ name: '' }} />
+			<FormSummary
+				label="hello-label"
+				gotoStep={callback}
+				formFields={{ name: '' }}
+			/>
 		);
 		expect(wrapper.find('.label')).toHaveLength(1);
 	});

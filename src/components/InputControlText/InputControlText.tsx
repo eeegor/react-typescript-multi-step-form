@@ -19,7 +19,10 @@ export interface Props {
 	required?: boolean;
 	errors?: string;
 	valid?: boolean;
-	onChange?: (name: string, event: React.ChangeEvent<HTMLInputElement>) => void;
+	onChange?: (
+		name: string,
+		event: React.ChangeEvent<HTMLInputElement>
+	) => void;
 }
 
 export const InputControlText = (props: Props): JSX.Element => {
@@ -47,9 +50,15 @@ export const InputControlText = (props: Props): JSX.Element => {
 			errors={errors}
 			valid={valid}
 		>
-			<Label className="input-control__label" htmlFor={id || name} label={label} />
+			<Label
+				className="input-control__label"
+				htmlFor={id || name}
+				label={label}
+			/>
 			<Info className="input-control__info" label={info} />
-			{errors && <Info className="input-control__errors" label={errors} />}
+			{errors && (
+				<Info className="input-control__errors" label={errors} />
+			)}
 			<input
 				className={`input-control__input input-${type || 'text'}`}
 				id={name}

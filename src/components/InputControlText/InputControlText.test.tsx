@@ -38,7 +38,9 @@ describe('InputControlText', () => {
 
 	it('should adopt a valid status attribute', () => {
 		const status = 'danger';
-		const wrapper = mount(<InputControlText status={status} {...testData} />);
+		const wrapper = mount(
+			<InputControlText status={status} {...testData} />
+		);
 		expect(
 			wrapper
 				.find('.input-control')

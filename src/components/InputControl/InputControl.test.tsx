@@ -11,7 +11,9 @@ describe('InputControl', () => {
 	});
 
 	it('should adopt a status class from attribute', () => {
-		const wrapper = shallow(<InputControl id="a-unique-id" status="success" />);
+		const wrapper = shallow(
+			<InputControl id="a-unique-id" status="success" />
+		);
 		expect(wrapper.hasClass('input-control--success')).toEqual(true);
 	});
 
@@ -21,12 +23,16 @@ describe('InputControl', () => {
 	});
 
 	it('should adopt a status danger class if has errors', () => {
-		const wrapper = shallow(<InputControl id="a-unique-id" errors={'Error'} />);
+		const wrapper = shallow(
+			<InputControl id="a-unique-id" errors={'Error'} />
+		);
 		expect(wrapper.hasClass('input-control--danger')).toEqual(true);
 	});
 
 	it('should adopt a required class from attribute', () => {
-		const wrapper = shallow(<InputControl id="a-unique-id" required={true} />);
+		const wrapper = shallow(
+			<InputControl id="a-unique-id" required={true} />
+		);
 		expect(wrapper.hasClass('input-control--required')).toEqual(true);
 	});
 });

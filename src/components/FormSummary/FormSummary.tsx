@@ -25,7 +25,9 @@ export const FormSummary = (props: Props): JSX.Element => {
 					<div className="table__row" key={formField}>
 						<div className="table__column">
 							<div className="table__label">{formField}</div>
-							<div className="table__value">{formFields[formField]}</div>
+							<div className="table__value">
+								{formFields[formField]}
+							</div>
 						</div>
 						<div className="table__column table__column--actions">
 							<Button

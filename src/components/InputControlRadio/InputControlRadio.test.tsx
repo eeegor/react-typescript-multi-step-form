@@ -38,7 +38,11 @@ describe('InputControlRadio', () => {
 
 	it('should handle defaultChecked', () => {
 		const wrapper = shallow(
-			<InputControlRadio defaultChecked={true} info={'Hello'} {...testData} />
+			<InputControlRadio
+				defaultChecked={true}
+				info={'Hello'}
+				{...testData}
+			/>
 		);
 		expect(wrapper.hasClass('input-control--checked')).toEqual(true);
 	});

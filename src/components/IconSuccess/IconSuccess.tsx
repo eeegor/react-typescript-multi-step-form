@@ -29,12 +29,18 @@ export const IconSuccess = (props: Props): JSX.Element => {
 						cx="36"
 						cy="36"
 						r="34"
-						style={{ strokeDasharray: '240px, 240px', strokeDashoffset: '480px' }}
+						style={{
+							strokeDasharray: '240px, 240px',
+							strokeDashoffset: '480px',
+						}}
 					/>
 					<path
 						className="icon-success__path"
 						d="M17.417,37.778l9.93,9.909l25.444-25.393"
-						style={{ strokeDasharray: '50px, 50px', strokeDashoffset: '0px' }}
+						style={{
+							strokeDasharray: '50px, 50px',
+							strokeDashoffset: '0px',
+						}}
 					/>
 				</g>
 			</svg>

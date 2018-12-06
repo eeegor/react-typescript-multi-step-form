@@ -80,7 +80,9 @@ export class App extends Component<Props, State> {
 						id="subscribe"
 						formSchema={formMultiStepSchema}
 						// formData={formMultiStepDefaultData}
-						onChange={formData => this.handleFormChange(formData.form as FormSchema)}
+						onChange={formData =>
+							this.handleFormChange(formData.form as FormSchema)
+						}
 					/>
 				</div>
 			</div>

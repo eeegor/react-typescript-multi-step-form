@@ -18,7 +18,10 @@ export interface Props {
 	className?: string;
 	defaultChecked?: boolean;
 	errors?: string;
-	onChange?: (name: string, event: React.ChangeEvent<HTMLInputElement>) => void;
+	onChange?: (
+		name: string,
+		event: React.ChangeEvent<HTMLInputElement>
+	) => void;
 }
 
 export const InputControlRadio = (props: Props): JSX.Element => {
@@ -40,7 +43,10 @@ export const InputControlRadio = (props: Props): JSX.Element => {
 		<InputControl
 			id={id}
 			type={'radio'}
-			className={classnames(className, defaultChecked && 'input-control--checked')}
+			className={classnames(
+				className,
+				defaultChecked && 'input-control--checked'
+			)}
 			errors={errors}
 		>
 			<input
@@ -54,7 +60,11 @@ export const InputControlRadio = (props: Props): JSX.Element => {
 				defaultChecked={defaultChecked || false}
 				autoFocus={defaultChecked || autoFocus || false}
 			/>
-			<Label className="input-control__label" htmlFor={id} label={label} />
+			<Label
+				className="input-control__label"
+				htmlFor={id}
+				label={label}
+			/>
 			<Info className="input-control__info" label={info} />
 		</InputControl>
 	);

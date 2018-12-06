@@ -21,7 +21,9 @@ describe('InputControlSelectRadio', () => {
 
 	it('should adopt a valid status attribute', () => {
 		const status = 'danger';
-		const wrapper = mount(<InputControlSelectRadio status={status} {...testData} />);
+		const wrapper = mount(
+			<InputControlSelectRadio status={status} {...testData} />
+		);
 		expect(
 			wrapper
 				.find('.input-control')
@@ -32,7 +34,9 @@ describe('InputControlSelectRadio', () => {
 
 	it('should adopt a valid info attribute', () => {
 		const info = 'test';
-		const wrapper = mount(<InputControlSelectRadio info={info} {...testData} />);
+		const wrapper = mount(
+			<InputControlSelectRadio info={info} {...testData} />
+		);
 		expect(
 			wrapper
 				.find('.input-control__info')

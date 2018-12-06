@@ -71,18 +71,20 @@ const initialState = (formSchema: object, formData?: object): State => {
 		currentStep: 1,
 		complete: false,
 		valid: false,
-		form: prepareFormData(formData) || makeDefaultFormData(formSchema) || {},
+		form:
+			prepareFormData(formData) || makeDefaultFormData(formSchema) || {},
 		errors: {},
 	};
 };
 
-const validateString = (value: string): boolean => /[0-9a-zA-Z]{2,}/i.test(`${value}`);
+const validateString = (value: string): boolean =>
+	/[0-9a-zA-Z]{2,}/i.test(`${value}`);
 const validateEmail = (value: string): boolean =>
 	/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
 		`${value}`
 	);
 
-const getValidationMessage = (current: object, state: State): string => {
+const getValidationMessage = (current: string): string => {
 	switch (current['type']) {
 		case 'radio':
 			return 'You need to select one item';
@@ -112,7 +114,10 @@ export class FormMultiStep extends Component<Props, State> {
 			this.setState(state => ({
 				...state,
 				complete: false,
-				currentStep: state.currentStep < maxSteps ? state.currentStep + 1 : maxSteps,
+				currentStep:
+					state.currentStep < maxSteps
+						? state.currentStep + 1
+						: maxSteps,
 			}));
 		}
 	};
@@ -130,9 +135,11 @@ export class FormMultiStep extends Component<Props, State> {
 		const current = this.props.formSchema[this.state.currentStep];
 		const hasErrors = this.state.form[current.name] === '';
 		const invalidString =
-			current['type'] === 'text' && !validateString(this.state.form[current.name]);
+			current['type'] === 'text' &&
+			!validateString(this.state.form[current.name]);
 		const invalidEmail =
-			current['type'] === 'email' && !validateEmail(this.state.form[current.name]);
+			current['type'] === 'email' &&
+			!validateEmail(this.state.form[current.name]);
 
 		if (hasErrors || invalidEmail || invalidString) {
 			this.setState(state => ({
@@ -140,7 +147,8 @@ export class FormMultiStep extends Component<Props, State> {
 				errors: {
 					...this.state.errors,
 					[current.name]:
-						(hasErrors && getValidationMessage(current, this.state)) ||
+						(hasErrors &&
+							getValidationMessage(current.type)) ||
 						(invalidEmail && 'Email is not valid') ||
 						(invalidString && 'This entry seems not valid...') ||
 						'Something went wrong',
@@ -182,8 +190,9 @@ export class FormMultiStep extends Component<Props, State> {
 
 	resetForm = (event: React.MouseEvent<HTMLButtonElement>) => {
 		event.preventDefault();
-		this.setState(initialState(this.props.formSchema, this.props.formData), () =>
-			this.props.onChange(this.state)
+		this.setState(
+			initialState(this.props.formSchema, this.props.formData),
+			() => this.props.onChange(this.state)
 		);
 	};
 
@@ -195,8 +204,13 @@ export class FormMultiStep extends Component<Props, State> {
 		const hasErrors = this.state.errors[input.name];
 
 		return (
-			<div id={`form-multi-step-${id}`} className={classnames('form-multi-step', className)}>
-				{complete && <FormSuccess onReset={event => this.resetForm(event)} />}
+			<div
+				id={`form-multi-step-${id}`}
+				className={classnames('form-multi-step', className)}
+			>
+				{complete && (
+					<FormSuccess onReset={event => this.resetForm(event)} />
+				)}
 				{!complete && (
 					<>
 						<FormControls
@@ -207,7 +221,9 @@ export class FormMultiStep extends Component<Props, State> {
 						<FormStep
 							key={currentStep}
 							id={`form-step-${currentStep}`}
-							onSubmit={formData => this.handleFormSubmit(formData)}
+							onSubmit={formData =>
+								this.handleFormSubmit(formData)
+							}
 						>
 							{input.type === 'radio' && (
 								<InputControlSelectRadio
@@ -220,16 +236,23 @@ export class FormMultiStep extends Component<Props, State> {
 									status={input.status}
 									errors={hasErrors}
 									defaultChecked={
-										(input.values.includes(form[input.name]) &&
+										(input.values.includes(
+											form[input.name]
+										) &&
 											form[input.name]) ||
-										(input.defaultChecked !== false && input.values[0])
+										(input.defaultChecked !== false &&
+											input.values[0])
 									}
 									onChange={(name, event) =>
-										this.handleInputChange(name, event.target.value)
+										this.handleInputChange(
+											name,
+											event.target.value
+										)
 									}
 								/>
 							)}
-							{(input.type === 'text' || input.type === 'email') && (
+							{(input.type === 'text' ||
+								input.type === 'email') && (
 								<InputControlText
 									id={input.id}
 									required={input.required}
@@ -242,7 +265,10 @@ export class FormMultiStep extends Component<Props, State> {
 									valid={valid}
 									status={input.status}
 									onChange={(name, event) =>
-										this.handleInputChange(name, event.target.value)
+										this.handleInputChange(
+											name,
+											event.target.value
+										)
 									}
 								/>
 							)}
@@ -265,7 +291,11 @@ export class FormMultiStep extends Component<Props, State> {
 								<Button
 									size="large"
 									className="form-multi-step__next"
-									type={(currentStep === maxSteps && 'disabled') || 'secondary'}
+									type={
+										(currentStep === maxSteps &&
+											'disabled') ||
+										'secondary'
+									}
 									onClick={() => this.gotoNextStep()}
 								>
 									Next

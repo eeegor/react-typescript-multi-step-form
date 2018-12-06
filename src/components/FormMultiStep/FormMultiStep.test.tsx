@@ -6,7 +6,13 @@ import { FormMultiStep } from './FormMultiStep';
 describe('FormMultiStep', () => {
 	const callback = jest.fn();
 	const testData = {
-		1: { type: 'text', id: 'name', name: 'name', label: 'Your full name', value: 'Demo' },
+		1: {
+			type: 'text',
+			id: 'name',
+			name: 'name',
+			label: 'Your full name',
+			value: 'Demo',
+		},
 		2: {
 			type: 'email',
 			id: 'email',
@@ -36,7 +42,13 @@ describe('FormMultiStep', () => {
 	};
 
 	it('renders markup correctly', () => {
-		const wrapper = <FormMultiStep id="test" formSchema={testData} onChange={callback} />;
+		const wrapper = (
+			<FormMultiStep
+				id="test"
+				formSchema={testData}
+				onChange={callback}
+			/>
+		);
 		const tree = renderer.create(wrapper).toJSON();
 		expect(tree).toMatchSnapshot();
 	});
@@ -46,7 +58,11 @@ describe('FormMultiStep', () => {
 			const testSet = testData[1];
 			const nextValue = { target: { value: testSet.value } };
 			const wrapper = mount(
-				<FormMultiStep id="test-text" formSchema={{ 1: testSet }} onChange={callback} />
+				<FormMultiStep
+					id="test-text"
+					formSchema={{ 1: testSet }}
+					onChange={callback}
+				/>
 			);
 			const form = wrapper.find(`#form-step-1`);
 			const formTextGroup = form.find('.input-text');
@@ -61,7 +77,11 @@ describe('FormMultiStep', () => {
 			const testSet = testData[2];
 			const nextValue = { target: { value: testSet.value } };
 			const wrapper = mount(
-				<FormMultiStep id="test-email" formSchema={{ 1: testSet }} onChange={callback} />
+				<FormMultiStep
+					id="test-email"
+					formSchema={{ 1: testSet }}
+					onChange={callback}
+				/>
 			);
 			const form = wrapper.find(`#form-step-1`);
 			const formTextGroup = form.find('.input-email');
@@ -84,7 +104,9 @@ describe('FormMultiStep', () => {
 			);
 			const form = wrapper.find(`#form-step-1`);
 			const formRadioGroup = form.find('.input-control-select-radio');
-			const formSelectRadioInput = formRadioGroup.find('.input-radio').first();
+			const formSelectRadioInput = formRadioGroup
+				.find('.input-radio')
+				.first();
 			formSelectRadioInput.simulate('focus');
 			formSelectRadioInput.simulate('change', nextValue);
 			formRadioGroup.simulate('submit', nextValue);
@@ -97,7 +119,11 @@ describe('FormMultiStep', () => {
 		const testSet = testData[1];
 		const nextValue = { target: { value: testSet.value } };
 		const wrapper = mount(
-			<FormMultiStep id="test-select-radio" formSchema={testData} onChange={callback} />
+			<FormMultiStep
+				id="test-select-radio"
+				formSchema={testData}
+				onChange={callback}
+			/>
 		);
 		const form = wrapper.find(`#form-step-1`);
 		const formTextGroup = form.find('.input-text');
@@ -112,7 +138,11 @@ describe('FormMultiStep', () => {
 		const testSet = testData[1];
 		const nextValue = { target: { value: testSet.value } };
 		const wrapper = mount(
-			<FormMultiStep id="test-select-radio" formSchema={testData} onChange={callback} />
+			<FormMultiStep
+				id="test-select-radio"
+				formSchema={testData}
+				onChange={callback}
+			/>
 		);
 		const form = wrapper.find(`#form-step-1`);
 		const formTextGroup = form.find('.input-text');
@@ -129,7 +159,11 @@ describe('FormMultiStep', () => {
 	it('should handleFormComplete', () => {
 		const testSet = testData[4];
 		const wrapper = mount(
-			<FormMultiStep id="test-submit" formSchema={{ 1: testSet }} onChange={callback} />
+			<FormMultiStep
+				id="test-submit"
+				formSchema={{ 1: testSet }}
+				onChange={callback}
+			/>
 		);
 		const submitGroup = wrapper.find(`.input-control-submit`).first();
 		const button = submitGroup.find(`button`).first();

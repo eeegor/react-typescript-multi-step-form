@@ -51,16 +51,21 @@ export const InputControlSubmit = (props: Props): JSX.Element => {
 			className={classnames(className)}
 			errors={errors}
 		>
-			<Label className="input-control__label" htmlFor={id} label={label} />
+			<Label
+				className="input-control__label"
+				htmlFor={id}
+				label={label}
+			/>
 			<Info className="input-control__info" label={info} />
-			{errors && <Info className="input-control__errors" label={errors} />}
+			{errors && (
+				<Info className="input-control__errors" label={errors} />
+			)}
 			{publicFormFields && (
 				<FormSummary
 					gotoStep={step => gotoStep && gotoStep(step)}
 					formFields={publicFormFields}
 				/>
 			)}
-
 			<Button
 				className={`input-control-submit__submit`}
 				size="large"
