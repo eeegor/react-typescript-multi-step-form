@@ -399,7 +399,7 @@ label {
   max-width: 540px;
   margin: 0 auto;
   padding: 0 1rem; }
-  @media (min-width: 767px) {
+  @media (min-width: 960px) {
     .container {
       padding: 0 4rem;
       max-width: 840px; } }
