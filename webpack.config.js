@@ -8,14 +8,14 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 const dotenv = require('dotenv');
 
+const mode = process.env.NODE_ENV || 'development';
+
 const env = dotenv.config().parsed;
 const envKeys = Object.keys(env).reduce((prev, next) => {
   prev[`process.env.${next}`] = JSON.stringify(env[next]);
-  console.log(JSON.stringify(env[next]));
   return prev;
 }, {});
 
-const mode = process.env.NODE_ENV || 'development';
 
 const config = {
   mode,
