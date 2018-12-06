@@ -3,11 +3,13 @@
 	"version": "0.0.1",
 	"private": false,
 	"license": "MIT",
+	"homepage": "http://www.egorkirpichev.com",
 	"author": {
 		"name": "Egor Kirpichev",
 		"email": "egor.kirpichev@gmail.com"
 	},
 	"dependencies": {
+		"gh-pages": "^2.0.1",
 		"react": "^15.6.0 || ^16.6.3",
 		"react-dom": "^16.6.3"
 	},
@@ -16,7 +18,9 @@
 		"build": "NODE_ENV=production webpack",
 		"lint": "tslint -c tslint.json -p . 'src/**/*.{ts,tsx}' && prettier --list-different \"src/**/*.{tsx,ts,scss}\"",
 		"format": "prettier --write \"src/**/*.{tsx,ts,scss}\"",
-		"test": "jest"
+		"test": "jest",
+		"predeploy": "yarn build",
+		"deploy": "gh-pages -d dist"
 	},
 	"devDependencies": {
 		"@types/classnames": "^2.2.4",
@@ -50,7 +54,7 @@
 		"tslint-react": "^3.6.0",
 		"typescript": "^3.2.1",
 		"webpack": "^4.15.0",
-		"webpack-cli": "^3.0.8",
+		"webpack-cli": "^3.1.2",
 		"webpack-dev-server": "^3.1.4"
 	}
 }
