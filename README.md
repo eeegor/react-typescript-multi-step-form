@@ -154,3 +154,20 @@ If you wish to host this app, you will need to run the build command. After you'
 # build static files
 yarn build
 ```
+
+## :truck: Deploy to Github Pages (Custom Url)
+
+If you wish, you can deploy this app to Github Pages. To do so please configure the following settings before you run `yarn deploy'.
+
+1. Set Production path in `.env` (see `.env.example` )
+	- e.g. production: `PATH_PRODUCTION=https://your-domain.com/your-repository-name`
+	- e.g. development: `PATH_DEVELOPMENT=/`
+2. Inside `package.json` you will need to modify `homepage` with your custom domain / github pages url
+   - e.g.: `https://your-domain.com/your-repository-name`
+3. Inside `package.json` you will ned to modify `build` with your custom domain / github pages
+   - e.g.: `www.your-domain.com`
+
+```bash
+# build static files
+yarn deploy
+```
