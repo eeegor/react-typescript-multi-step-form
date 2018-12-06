@@ -18,7 +18,10 @@ import {
 	InputControlSubmit,
 	Props as InputControlSubmitProps,
 } from './InputControlSubmit/InputControlSubmit';
-import { InputControlText, Props as InputControlTextProps } from './InputControlText/InputControlText';
+import {
+	InputControlText,
+	Props as InputControlTextProps,
+} from './InputControlText/InputControlText';
 import { Label } from './Label/Label';
 import { FormSuccess } from './FormSuccess/FormSuccess';
 

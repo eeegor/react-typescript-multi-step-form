@@ -11,21 +11,21 @@ exports[`FormSummary renders markup correctly 1`] = `
       className="table__row"
     >
       <div
-        className="table__row__column"
+        className="table__column"
       >
         <div
-          className="table__row__label"
+          className="table__label"
         >
           name
         </div>
         <div
-          className="table__row__value"
+          className="table__value"
         >
           
         </div>
       </div>
       <div
-        className="table__row__edit"
+        className="table__column table__column--actions"
       >
         <button
           className="button button--small form-summary__edit"

@@ -1,5 +1,5 @@
-import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import React from 'react';
+import renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 import { InputControlSubmit } from './InputControlSubmit';
 
@@ -61,6 +61,6 @@ describe('InputControlSubmit', () => {
 		);
 		const table = wrapper.find('.form-summary .table');
 		expect(table.length).toEqual(1);
-		expect(table.find('.table__row__label').length).toEqual(1);
+		expect(table.find('.table__label').length).toEqual(1);
 	});
 });

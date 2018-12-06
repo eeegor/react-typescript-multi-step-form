@@ -222,8 +222,7 @@ export class FormMultiStep extends React.Component<Props, State> {
 									defaultChecked={
 										(input.values.includes(form[input.name]) &&
 											form[input.name]) ||
-										(input.defaultChecked !== false &&
-											input.values[0])
+										(input.defaultChecked !== false && input.values[0])
 									}
 									onChange={(name, event) =>
 										this.handleInputChange(name, event.target.value)

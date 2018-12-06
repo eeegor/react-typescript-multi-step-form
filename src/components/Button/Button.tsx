@@ -34,11 +34,7 @@ export const Button = (props: Props): JSX.Element => {
 	}
 
 	return (
-		<button
-			type="button"
-			className={cssClasses}
-			onClick={event => onClick && onClick(event)}
-		>
+		<button type="button" className={cssClasses} onClick={event => onClick && onClick(event)}>
 			{children}
 		</button>
 	);

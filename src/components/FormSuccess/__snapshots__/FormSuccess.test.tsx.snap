@@ -18,7 +18,7 @@ exports[`FormSuccess renders markup correctly 1`] = `
       >
         <g
           fill="none"
-          stroke="#8EC343"
+          stroke="#83c736"
           strokeWidth="3"
         >
           <circle
