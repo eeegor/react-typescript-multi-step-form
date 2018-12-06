@@ -17,6 +17,7 @@ export interface Props {
 export class Button extends React.Component<Props> {
 	render(): JSX.Element {
 		const { size, className, type, children, onClick } = this.props;
+		const isDisabled = type === 'disabled';
 		const cssClass = 'button';
 		const cssClasses = classnames(
 			cssClass,
@@ -24,7 +25,6 @@ export class Button extends React.Component<Props> {
 			size && `button--${size}`,
 			className
 		);
-		const isDisabled = type === 'disabled';
 
 		if (isDisabled) {
 			return (

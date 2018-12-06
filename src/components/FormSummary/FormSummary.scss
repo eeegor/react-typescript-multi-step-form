@@ -19,15 +19,15 @@
 	}
 }
 
-.table__row__label {
+.table__label {
 	opacity: 0.5;
 }
 
-.table__row__value {
+.table__value {
 	color: #333;
 }
 
-.table__row__column {
+.table__column {
 	display: grid;
 	grid-template-columns: 1fr;
 

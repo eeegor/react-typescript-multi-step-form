@@ -52,7 +52,7 @@ export class InputControlSubmit extends React.Component<Props> {
 				className={classnames(className)}
 				errors={errors}
 			>
-				<Label className="input-control__label" htmlFor={id || name} label={label} />
+				<Label className="input-control__label" htmlFor={id} label={label} />
 				<Info className="input-control__info" label={info} />
 				{errors && <Info className="input-control__errors" label={errors} />}
 				{publicFormFields && (

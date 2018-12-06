@@ -190,9 +190,9 @@ export class FormMultiStep extends React.Component<Props, State> {
 	render(): JSX.Element {
 		const { id, className, formSchema } = this.props;
 		const { form, currentStep, complete, valid } = this.state;
-		const formStepData = formSchema[currentStep];
+		const input = formSchema[currentStep];
 		const maxSteps = Object.keys(form).length;
-		const hasErrors = this.state.errors[formStepData.name];
+		const hasErrors = this.state.errors[input.name];
 
 		return (
 			<div id={`form-multi-step-${id}`} className={classnames('form-multi-step', className)}>
@@ -209,60 +209,60 @@ export class FormMultiStep extends React.Component<Props, State> {
 							id={`form-step-${currentStep}`}
 							onSubmit={formData => this.handleFormSubmit(formData)}
 						>
-							{formStepData.type === 'radio' && (
+							{input.type === 'radio' && (
 								<InputControlSelectRadio
-									id={formStepData.id}
-									required={formStepData.required}
-									name={formStepData.name}
-									label={formStepData.label}
-									values={formStepData.values}
-									info={formStepData.info}
-									status={formStepData.status}
+									id={input.id}
+									required={input.required}
+									name={input.name}
+									label={input.label}
+									values={input.values}
+									info={input.info}
+									status={input.status}
 									errors={hasErrors}
 									defaultChecked={
-										(formStepData.values.includes(form[formStepData.name]) &&
-											form[formStepData.name]) ||
-										(formStepData.defaultChecked !== false &&
-											formStepData.values[0])
+										(input.values.includes(form[input.name]) &&
+											form[input.name]) ||
+										(input.defaultChecked !== false &&
+											input.values[0])
 									}
 									onChange={(name, event) =>
 										this.handleInputChange(name, event.target.value)
 									}
 								/>
 							)}
-							{(formStepData.type === 'text' || formStepData.type === 'email') && (
+							{(input.type === 'text' || input.type === 'email') && (
 								<InputControlText
-									id={formStepData.id}
-									required={formStepData.required}
-									name={formStepData.name}
-									label={formStepData.label}
-									type={formStepData.type}
-									value={form[formStepData.name]}
-									info={formStepData.info}
+									id={input.id}
+									required={input.required}
+									name={input.name}
+									label={input.label}
+									type={input.type}
+									value={form[input.name]}
+									info={input.info}
 									errors={hasErrors}
 									valid={valid}
-									status={formStepData.status}
+									status={input.status}
 									onChange={(name, event) =>
 										this.handleInputChange(name, event.target.value)
 									}
 								/>
 							)}
-							{formStepData.type === 'submit' && (
+							{input.type === 'submit' && (
 								<InputControlSubmit
-									id={formStepData.id}
-									required={formStepData.required}
-									name={formStepData.name}
-									label={formStepData.label}
-									value={formStepData.value}
-									info={formStepData.info}
-									status={formStepData.status}
+									id={input.id}
+									required={input.required}
+									name={input.name}
+									label={input.label}
+									value={input.value}
+									info={input.info}
+									status={input.status}
 									formValues={form}
 									errors={hasErrors}
 									onClick={() => this.handleFormComplete()}
 									gotoStep={step => this.gotoStep(step)}
 								/>
 							)}
-							{formStepData.type !== 'submit' && (
+							{input.type !== 'submit' && (
 								<Button
 									size="large"
 									className="form-multi-step__next"
