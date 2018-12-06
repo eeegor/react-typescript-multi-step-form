@@ -14,7 +14,7 @@ const config = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[hash].js',
-    publicPath: '/',
+    publicPath: 'https://egorkirpichev.com/react-typescript-multi-step-form',
   },
   module: {
     rules: [
