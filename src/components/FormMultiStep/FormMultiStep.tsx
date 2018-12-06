@@ -147,8 +147,7 @@ export class FormMultiStep extends Component<Props, State> {
 				errors: {
 					...this.state.errors,
 					[current.name]:
-						(hasErrors &&
-							getValidationMessage(current.type)) ||
+						(hasErrors && getValidationMessage(current.type)) ||
 						(invalidEmail && 'Email is not valid') ||
 						(invalidString && 'This entry seems not valid...') ||
 						'Something went wrong',
