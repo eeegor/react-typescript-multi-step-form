@@ -9,7 +9,6 @@
 		"email": "egor.kirpichev@gmail.com"
 	},
 	"dependencies": {
-		"gh-pages": "^2.0.1",
 		"react": "^15.6.0 || ^16.6.3",
 		"react-dom": "^16.6.3"
 	},
@@ -35,9 +34,11 @@
 		"babel-preset-env": "^1.7.0",
 		"classnames": "^2.2.6",
 		"css-loader": "^0.28.11",
+		"dotenv": "^6.2.0",
 		"enzyme": "^3.7.0",
 		"enzyme-adapter-react-16": "^1.7.0",
 		"file-loader": "^1.1.11",
+		"gh-pages": "^2.0.1",
 		"html-webpack-plugin": "^3.2.0",
 		"jest": "^23.6.0",
 		"jest-junit": "^5.1.0",

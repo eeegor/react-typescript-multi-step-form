@@ -6,15 +6,24 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
+const dotenv = require('dotenv');
+
+const env = dotenv.config().parsed;
+const envKeys = Object.keys(env).reduce((prev, next) => {
+  prev[`process.env.${next}`] = JSON.stringify(env[next]);
+  console.log(JSON.stringify(env[next]));
+  return prev;
+}, {});
 
 const mode = process.env.NODE_ENV || 'development';
+
 const config = {
   mode,
   entry: './src/index.tsx',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].[hash].js',
-    publicPath: 'https://egorkirpichev.com/react-typescript-multi-step-form',
+    publicPath: process.env.PATH_PRODUCTION,
   },
   module: {
     rules: [
@@ -48,6 +57,7 @@ const config = {
       filename: '[name].[hash].css',
       chunkFilename: '[id].css',
     }),
+    new webpack.DefinePlugin(envKeys),
     new webpack.HotModuleReplacementPlugin(),
   ],
 };
@@ -55,6 +65,9 @@ const config = {
 if (mode == 'development') {
   Object.assign(config, {
     devtool: 'inline-source-map',
+    output: {
+      publicPath: process.env.PATH_DEVELOPMENT,
+    },
     devServer: {
       contentBase: './dist',
       hot: true,
